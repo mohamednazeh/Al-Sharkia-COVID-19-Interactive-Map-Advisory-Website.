@@ -1,0 +1,119 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="/stylesheets/Bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/admin.css">
+</head>
+<body>
+  <div class="sign-in">
+      <div class="container">
+              <div class="left">
+                  <h2 class="log text-center">Administration of system</h2>
+                  <form action="/s-p!187/login" method="post">
+                      <div class="mb-3">
+                       <input type="email"  class="form" placeholder="Email" name="email" required>
+                      </div>
+                      <div class="mb-3">
+                          <input type="password" class="form" placeholder="Password" name="password"  required>
+                      </div>
+                      <% if (success == false) { %>
+                        <div class="error">
+                          <% if (error.errors.length !== 0) { %>
+                           <% if(error.errors[0].param === "password") {%>
+                            <p> Password is not correct, revise the manager</p>
+                          <%}else if(error.errors[0].param === "email") {%>
+                            <p>email deosn't exist, revise the manager</p>
+                          <%}%>
+                            <% } %>
+                        </div>
+                      <% } %>
+                      <div class="btn-signin text-center">
+                      <button type="submit" class="btn text-uppercase">Sign In</button>
+                      </div>
+                  </form>
+              </div>      
+      </div>
+  </div>
+  <script src="/javascripts/Bootstrap/bootstrap.js"></script>
+  <script src="/javascripts/Bootstrap/popper.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <head>
+  <link rel="stylesheet" href="../stylesheets/SignIn.css">
+</head>
+<div class="center enhance" >
+  
+  <h2 style="text-align:center !important">
+    <p>
+      <span style="
+        background: white;
+        color: #42ccca;
+        padding: 2px 13px;
+        font-size: 15px;
+        border-radius: 5px;
+        font-weight: normal;
+      ">Admin</span>
+      Sign In
+    </p>
+  </h2>
+ 
+  <form action="/s-p!187/login" method="post">
+      <div class="txt-feild">
+          <input type="text" name="email" required>
+          <span></span>
+          <label>Email</label>
+      </div>
+      <div class="txt-feild">
+          <input type="password" name="password"  required>
+          <span></span>
+          <label>Password</label>
+      </div>
+      <input type="submit" value="Sign In" class="submit">
+      <div class="pass">Forgot Password?</div>
+      <div class="signup-link">
+          Administration of system
+      </div>
+  </form>
+  <% if (success == false) { %>
+    <div class="error">
+      <% if (error.errors.length !== 0) { %>
+       <% if(error.errors[0].param === "password") {%>
+        <p> Password is not correct, revise the manager</p>
+      <%}else if(error.errors[0].param === "email") {%>
+        <p>email deosn't exist, revise the manager</p>
+      <%}%>
+        <% } %>
+    </div>
+  <% } %>
+</div> -->

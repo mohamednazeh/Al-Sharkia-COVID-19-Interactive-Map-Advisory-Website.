@@ -1,0 +1,160 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../public/stylesheets/Bootstrap/bootstrap.css">
+    <!-- <link rel="stylesheet" href="css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/stylesheets/master.css"/> 
+    <link rel="stylesheet" href="../stylesheets/SignUp.css">
+</head>
+<body>
+    <div class="sign-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 info">
+                    <div class="left text-center">
+                        <h2 class="h1">Welcome Back!</h2>
+                        <p class="title-p1 tex">To keep connected with us please</p>
+                        <p class="title-p2">login with personal info</p>
+                        
+                        <button class="btn text-uppercase"><a href="/user/login">Sign In</a></button>
+
+                    </div>
+                </div>
+                <div class="col-md-7 info">
+                <div class="right">
+                    <h2 class="log text-center">Create Account</h2>
+                    <ul class="list-unstyled text-center">
+                        <li><i class="fab fa-facebook-f fa-1x"></i></li>
+                        <li><i class="fab fa-google-plus-g fa-1x"></i></li>
+                        <li><i class="fab fa-brands fa-linkedin-in fa-1x"></i>
+                        </li>                        
+                    </ul>
+                    <p class="title text-center">or use your email for register</p>
+                    <form action="/user/signup" method="post">
+                        <div class="mb-3">
+                            <input type="text"  class="form" placeholder="Name" name="name" required>
+                           </div>
+                        <div class="mb-3">
+                         <input type="email"  class="form" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form" placeholder="Password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                          <input type="password" class="form" placeholder="Confirm password"  name="confirm-password" required>
+                      </div>   
+                      <% if (success == false) { %>
+                        <div class="error">
+                          <% if (error.errors.length !== 0) { %>
+                            <%if ( error.errors[0].param === "name") {%>
+                              <p> Name must be at least <span><u><b>7</b></u></span> characters </p>
+                           <% }else if(error.errors[0].param === "password") {%>
+                            <p> Password must be at least <span ><u><b>8</b></u></span> characters </p>
+                          <%}else if(error.errors[0].param === "confirm-password") {%>
+                            <p>Password must be matched </p>
+                          <%}else if(error.errors[0].param === "email") {%>
+                            <p>email alredy exists</p>
+                          <% } %> 
+                            <% } %>
+                        </div>
+                      <% } %>                     
+                        <div class="btn-signin text-center">
+                        <input type="submit" value="Sign Up" class="btn text-uppercase">
+                        <!-- <button type="submit" class="btn text-uppercase">Sign Up</button> -->
+                        </div>
+                    </form>
+                </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <script src="../javascripts/Bootstrap/bootstrap.js"></script>
+    <script src="../javascripts/Bootstrap/popper.min.js"></script>
+    <!-- <script src="js/fontawesome.min.js"></script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<head>
+  <link rel="stylesheet" href="../stylesheets/SignIn.css">
+</head>
+
+<div class="center enhance">
+  <h2>
+    <img class="avatar" src="/images/login-avatar2.png" alt="" srcset="">
+    <p>Sign Up</p>
+  </h2>
+  <form action="/user/signup" method="post">
+      <div class="txt-feild">
+        <input type="text" name="name" required>
+        <span></span>
+        <label>User Name</label>
+      </div>
+      <div class="txt-feild">
+          <input type="email" name="email" required>
+          <span></span>
+          <label>Email</label>
+      </div>
+      <div class="txt-feild">
+          <input type="password" name="password"   required>
+          <span></span>
+          <label>Password</label>
+      </div>
+      <div class="txt-feild">
+        <input type="password" name="confirm-password"  required>
+        <span></span>
+        <label>Confirm password</label>
+    </div>
+      <input type="submit" value="Sign Up" class="submit">
+      <div class="signup-link">
+        Have an account?  <a href="/user/login">Sign In</a>
+      </div>
+  </form>
+  <% if (success == false) { %>
+    <div class="error">
+      <% if (error.errors.length !== 0) { %>
+        <%if ( error.errors[0].param === "name") {%>
+          <p> Name must be at least <span><u><b>7</b></u></span> characters </p>
+       <% }else if(error.errors[0].param === "password") {%>
+        <p> Password must be at least <span ><u><b>8</b></u></span> characters </p>
+      <%}else if(error.errors[0].param === "confirm-password") {%>
+        <p>Password must be matched </p>
+      <%}else if(error.errors[0].param === "email") {%>
+        <p>email alredy exists</p>
+      <% } %> 
+        <% } %>
+    </div>
+  <% } %>
+</div> -->

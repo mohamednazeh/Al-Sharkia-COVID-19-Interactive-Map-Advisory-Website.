@@ -1,0 +1,391 @@
+
+*{
+  box-sizing: border-box;
+}
+/* html {
+  scrollbar-color: darkblue white;
+  overflow-x:hidden;
+} */
+
+ol {
+  margin-left:10px;
+}
+body {
+  position: relative;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width:100%;
+  height:100%;
+  padding:0px;
+}
+::-webkit-scrollbar {
+  width:15px;
+}
+::-webkit-scrollbar-track {
+  border:1px solid #3f51b5;
+  border-radius:5px;
+  box-shadow: inset 0 0 1px 1px #3f51b5;
+}
+::-webkit-scrollbar-thumb{
+  background:#3f51b5;
+  border-radius:50px;
+  
+}
+.current {
+  display: block !important;
+}.container {
+  position:relative;
+  width:100%;
+  /* height:100%; */
+}
+/* +1 Expert Window */
+
+/* +2 Expert App */
+.exp-app {
+  width:60%;
+  min-height:550px;
+  border:none;
+  margin:10% auto;
+}.exp-app > aside, #expert-door {
+  position: absolute;
+  border:none;
+  display:none;
+  top:0;
+  left:0;
+}
+/* )+ Diagnose Service Start Door or window */
+#expert-door > div {
+  height:100%;
+}#expert-door .left-side {
+  background:grey;
+}#expert-door header h1 {
+  font-size:1.6em;
+  color: gray;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+#expert-door footer button {
+  width: 182px !important;
+  font-size: 1em !important;
+  height: 36px !important;
+  margin: 5px 5px;
+}#expert-door footer button.complete {
+   background: white !important;
+   color: grey !important;
+   border-color: white;
+}
+#expert-door .diagnose-cnt img {
+  width: 120px;
+  height: 120px;
+  border: 1px solid gray;
+  border-radius: 50%;
+}#expert-door .diagnose-cnt .diagnose-desc {
+  font-size: 1.2em;
+  text-align: left;
+  text-align: justify;
+  color: gray;
+  text-indent: 52px;
+  margin-bottom: 14px;
+}
+#expert_window .left-side {
+  position: relative;
+  background-color: grey;
+}
+#expert_window .left-side img {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border: 2px solid gray;
+  border-radius: 50%;
+  top: 42%;
+  left: 64%;
+}#expert_window .right-side {
+  padding: 88px 52px;
+  padding-right:30px !important;
+}
+#expert_window .right-side .question-cntr {
+  margin-bottom:15px;
+}
+#expert_window .right-side .question-cntr .get-answers {
+  margin:12px 0px !important;
+}
+#expert_window .right-side .question-cntr .question-desc p{
+  position:relative;
+  font-size: .9em;
+  margin: 4px 0px;
+  background: gray;
+  color: white;
+  padding: 3px 10px;
+  opacity: 0.8;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+#expert_window .right-side .question-cntr .question-desc p span {
+  font-weight: bold;
+  position: absolute;
+  width: 20px;
+  display: block;
+  background: white;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 5;
+  color: gray;
+  text-align: center;
+  left: -32px;
+}
+
+#expert_window .right-side .question-cntr > p {
+  position: relative;
+  font-size:1.3em;
+  color:grey;
+  font-weight:bold;
+}
+#expert_window .right-side .question-cntr > p span {
+  width: 17px;
+  height: 17px;
+  border: 2px solid gray;
+  font-size: 3px;
+  padding: 0px 3px;
+  border-radius: 50%;
+  line-height: -1px;
+  margin-right: 5px;
+  top: 6px;
+  position: absolute;
+  left: -24px;
+}
+#expert_window .right-side button {
+  width: 75px;
+  height: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid gray;
+  color: grey;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all .3s linear;
+}
+#expert_window .right-side button:hover {
+  background:grey;
+  color:white;
+}
+#expert_window .right-side footer div {
+  position: relative;
+  float: right;
+}
+#expert_window .right-side footer  button {
+  background:grey;
+  color:white;
+  margin:5px 4px;
+}
+#expert_window .right-side footer button:hover {
+  opacity:.6;
+}
+#expert_window .right-side footer .back-btn {
+  background:white;
+  color: grey;
+  border-color:white;
+}
+.selected {
+  background:grey !important;
+  color:white !important;
+}
+
+/* )+ Diagnose Service Forms */
+.frm-exp {
+  background-color: #ffffff59;
+  display: none;
+  padding-bottom: 48px;
+  width: 50% !important;
+  position: relative;
+  top: -100px;
+  left: -180px;
+}
+#flu , #medicine{
+  height: 673px !important;
+  overflow-y: scroll;
+  width: 36%;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+#medicine .prev , #flu .prev{
+  float:left;
+  border: 1px solid #3f51b5;
+}
+
+#flu li {
+  margin-top:20px;
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+#sever{
+  border-radius: 10px;
+width: 40%;
+}
+#sever .prev{
+  float: left;
+
+}
+#moderate{
+  width: 55%;
+  width: 55%;
+}
+#moderate .frm-title{
+  width: 100%;
+}
+#moderate .prev{
+  float: left; 
+}
+
+/* Address of Question */
+.frm-exp .frm-title {
+  height: 68px;
+  background: #C23C39;
+  font-weight: bold;
+  padding: 22px;
+  padding-left: 35px;
+  box-shadow: 1px 1px 20px #fff;
+  position: relative;
+  top: 2px;
+}
+.frm-exp .frm-title p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Container of Question*/
+.frm-exp .frmqstns {
+  color: darkblue;
+  padding: 33px;
+}
+/* Question of form */
+.frm-exp .frmqstns .frm-qstn {
+  font-size: 1.4rem;
+  margin: -21px 0px;
+}
+.frm-exp .frmqstns .frm-qstn p {
+  margin: 5px 0px;
+  font-size: 1.2rem;
+  color: #3f51b5;
+  padding-top: 25px;
+  padding-left: 25px;  
+}
+/* Select anwers of form */
+.select-answers > section {
+  width: 110px;
+  height: 34px;
+  margin: 5px 0px;
+  text-align: center;
+  padding: 4px;
+  border-radius: 6px;
+  display: inline-block;
+  color: #000;
+}
+.frm-exp .frmqstns .frm-qstn .select-answers {
+  font-size: 1.2rem;
+  color: #4797b7;
+}
+.frm-exp .frmqstns .frm-qstn .select-answers input {
+  color:darkblue;
+  border-color: darkblue;
+  background-color:darkblue;
+  margin:0px 3px;
+}
+/* Navigation of form */
+.frm-exp .frm-navigation {
+  height: 35px;
+}
+.frm-exp .frm-navigation div {
+  position: relative;
+  top: -20px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 51px;
+}
+/* Buttons of form */
+.frm-exp .frm-navigation div button {
+  position: relative;
+  padding: 15px;
+  min-width: 100px;
+  margin: 0px 5px;
+  height: 34px;
+  line-height: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  transition: all .3s ease-in-out;
+}.frm-exp .frm-navigation div button:hover {
+  background:white;
+  color:darkblue;
+}
+
+.prev:hover , .next:hover{
+  background: #3f51b5 !important;
+    color: #fff !important;
+}
+.next{
+  border-radius: 5px  !important;
+  background:#3f51b5 !important;
+  color: #fff !important;
+  position: relative;
+  top: 20px; 
+  float:right;
+}
+.prev{
+  border-radius: 5px  !important;
+  background:#fff !important;
+  color: #3f51b5 !important;
+  position: relative;
+  top: 20px;
+}
+
+
+/* On screens that are 415px or less, set these style */
+@media screen and (max-width: 768px) {
+
+ .exp-app {
+  width:100%;
+ }
+  /* START WINDOW */
+  #expert-door footer button {
+    width:100% !important;
+  }
+
+  #expert-door .diagnose-cnt img {
+    width: 65px !important;
+    height: 65px !important;
+  }
+
+  #expert-door header h1 {
+    margin-top:5px !important;
+  }
+  #expert-door .diagnose-cnt .diagnose-desc {
+    font-size: .9em;
+  }#expert_window .right-side .question-cntr > p {
+    font-size:1em;
+  }
+}
+
+/* IPHONEs _ GALAXY _ Small Devices */
+@media screen and (max-width: 529px) {
+  .exp-app {
+    min-height: 691px;
+  }
+  #expert_window .right-side footer div, #expert_window .right-side footer div button {
+    width: 100% !important;
+  }
+}
+
+/* CRAZY GALAXY */
+@media screen and (max-width: 360px) {
+  /* )+ Start Window of diagnose */
+  #expert-door header h1 {
+    font-size:1em;
+  }
+}

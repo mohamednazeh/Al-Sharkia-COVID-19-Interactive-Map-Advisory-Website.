@@ -1,0 +1,245 @@
+
+@keyframes showOptions {
+  from {
+   height:0px;    
+   display: none;
+  }
+  to {
+    height:100%;    
+    display: block;
+  }
+}
+
+/* Navbar */
+.navbar .title {
+  font-size: 1.4rem;
+  color: #9fe8b0;
+  font-weight: bold;
+}
+
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+body {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-cntr {
+  height: 100vh;
+  background: #fff;
+}
+.admin-dashboard > aside {
+  display: inline-block;
+  height:100vh;
+  
+}
+
+.admin-dashboard .settings-tools .tool_name {
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 80%;
+  padding: 2px 12px;
+  color: #9fe8b0;
+}
+.admin-dashboard .settings-tools .tool_name a {
+  color: #9fe8b0;
+} 
+.admin-dashboard .settings-tools .tool_options {
+  background:lightgrey;
+  display: none;
+  min-height:0px;
+}
+
+.admin-dashboard .settings-tools .tool_options ul {
+  list-style-type: none;
+  padding: 3px 1px;
+  background: #3d857b;
+}
+.admin-dashboard .settings-tools .tool_options ul li {
+  border-bottom: 2px solid #3d857b;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  background: #9fe8b0;
+  color: #3d857b;
+  width: 90%;
+  padding: 3px 2px;
+  margin: 2px 9px;
+}
+.admin-dashboard .settings-tools .tool_options ul li:hover {
+  opacity:.8;
+}
+.admin-dashboard .settings-tools .tool_options ul li a {
+  color: #3d857b !important;
+}
+
+.admin-dashboard .settings-tools .tool_name:hover {
+ opacity:.8; 
+}
+
+.admin-dashboard .settings-tools .tools {
+  position: relative;
+  margin-top: 53px;
+  color: white;
+  font-weight: bold;  
+}
+
+
+.admin-dashboard .settings-tools .admin-avatar {
+  width: 100%;
+  height: 184px;  
+  margin-top: 3px;
+}.admin-dashboard .settings-tools .admin-name {
+  text-align: center;
+  font-size: 1.1rem;
+  background: #9fe8b0;
+  width: 100%;
+  min-height: 28px;
+  color: #3d857b;
+  font-weight: bold;
+  border-bottom: 5px solid #9fe8b0;
+  padding: 5px;
+}
+
+/* Navbar of Dashboard */
+.navbar {
+  position: relative;
+  width:100%;
+  height:65px;
+  background: #3d857b;
+  margin-bottom: 5px;
+}
+
+/* Setting of Dashboard */
+.dashboard-settings {
+  position: relative;
+  float: left;
+  height:100%;
+  width:1%;
+  background:#3d857b;
+  padding:0px 7px;
+}
+
+.dashboard-settings .settings-cntrol  {
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #3d857b;
+  border-radius: 50%;
+  background: white;
+  transition: all .3s linear;
+  cursor:pointer;
+  z-index: 12;
+}
+
+.dashboard-settings .settings-cntrol > div {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border: 6px solid #3d857b;
+  border-top: none;
+  border-left: none;
+  transform: rotate(325deg);
+  left: 10px;
+  bottom: 13px;
+  cursor:pointer;
+  transition: all .3s linear;
+  
+}
+
+.dashboard-settings .settings-cntrol:hover {
+  background:white;
+  border-color:#3d857b;
+}
+.dashboard-settings .settings-cntrol:hover > div {
+  border-color:#3d857b;
+}
+
+.dashboard-settings .settings-cntrol .settings_cntrol_close {
+  display: none;
+  transform: rotate(140deg);
+  left: 14px;
+}
+
+/* Content of Dashboard */
+.dashboard-cnt {
+  position: relative;
+  float: right;
+  width:98%;
+  height: 100%;
+  padding:50px;
+  background-color: transparent;
+  overflow-y: scroll;
+}
+
+.tablesData > div {
+  display: inline-block;
+}
+
+
+@keyframes animateSections {
+  0%   {
+    display:none;
+  }
+  100% {
+    display:block;
+  }
+}
+.running-work {
+  margin: 20px 0px;
+}
+.running-work > section {
+  position: relative;
+  width: 24%;
+  min-height: 56px;
+  display: none;
+  display: inline-block;
+  animation: animateSections 3s 1;
+  background: rgba(227, 98, 98, 0.8);
+  padding-top: 25px;
+  padding-bottom: 16px;
+  box-shadow: -1px 1px 9px #9fe8b0
+}
+
+
+.running-work > section img {
+  position: relative;
+  width: 68px;
+  height: 59px;
+  margin-right: 9px;
+}
+.running-work > section > p {
+  display: inline-block;
+}
+
+.running-work > section .number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+.running-work > section .name {
+  display: block;
+  margin: 1px 0px;
+  font-size:1.2rem;
+  color: #9fe8b0;
+}
+
+.running-work .sctn-cntr {
+  margin:0px auto;
+  width: 80%;
+}
+.running-work .sctn-cntr div:nth-child(1) {
+  float: left;
+}
+
+
+

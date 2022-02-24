@@ -1,0 +1,225 @@
+/* @Media query of forms of diagose */
+/* ### Mobile Phones Portrait or Landscape #### */
+@media screen and ( max-device-width:  640px ) {
+
+}
+/* ### IPhone 4+ Portrait or Landscape #### */
+@media screen and ( max-device-width:  480px ) and (-webkit-min-device-pixel-ratio: 2) {
+	/* STart_Diagnose Service */
+	.start-daignosis {
+		width:100% !important;
+		padding: 30px !important;
+		height: 596px !important;
+	}
+	.start-daignosis button {
+	width:100%;}
+	
+	.start-daignosis .btn-complete {
+	margin-top:8px !important;}
+	
+	/* Forms */
+	.frm-exp {
+			width:  100% !important;
+	}
+	.frm-exp .frm-navigation div button {
+		min-width: 90% !important;
+	}
+	#medicine .prev, #flu .prev {
+		left: 0px !important;
+	}
+	
+	/* Button of forms */
+	.frm-exp .frm-navigation div button {
+		margin: 2px 14px !important;
+	}
+	
+	/* Prime Check */
+	
+	/* Report of stable case */
+	.report-one {
+		width: 90% !important; height: 627px}
+		.report-one button {
+			width: 80%;
+			margin: 5px 0px;
+		}
+		.report-one .btn-next {
+			float:right;
+		}
+		.report-one button {
+			margin-left: 31px;
+		}
+		
+	/* Isolation Case */
+	.isolated_case {
+		width:98% !important;
+		height:881px !important;
+	}
+	
+	.report-three button {
+		width:80% !important;
+	} 
+	.report-three .btn-prev {
+		margin-left: 40px;}
+		
+	.report-three .btn-next {
+		margin-right: 34px !important;
+		margin-top: 10px !important;
+	}
+	
+	.diagnosis-four {
+		width:90% !important;
+	}
+	.diagnosis-four .btn-next {
+		margin-left: -281px !important;
+	}
+	
+	/* Examinations Case */
+	.report-two {
+		width: 97% !important;
+		height:713px !important;
+	}
+	.report-two button {
+		width:80%;
+	}
+	.report-two .btn-prev {
+		margin-left:34px;
+	}.report-two .btn-next {
+		margin-right: 40px;
+		margin-top: 11px;
+	}
+	
+	/* Failure Check */
+	.diagnosis-six {
+		width:90% !important;
+	}
+	.diagnosis-six .btn-next {
+		left: 112px;	
+	}
+	
+	/* Critical */
+	.critical {
+		width:95% !important;
+		/* height: 274px !important; */
+	}
+	
+	/* Sever */
+	#sever {
+		height: 958px !important;
+	}
+	#sever .prev {
+    margin-bottom: 10px !important;
+	}
+	.dagnosis {
+		height:966px !important;
+	}
+	
+	/* Moderate */
+	#moderate .prev {
+    float: left;
+    margin-bottom: 8px !important;
+	}
+	
+	/* Allergies */
+	.allergies {
+		width:90% !important;
+	} 
+	
+}
+
+/* ### Tablets Portrait or Landscape #### */
+@media screen and ( min-device-width:  768px ) and (max-device-width: 1024px) {
+	/* STart_Diagnose Service */
+	.start-daignosis {
+		width:100% !important;
+	}
+
+	.frm-exp {
+		width:  90% !important;
+	}
+	
+	/* Prime Check */
+	.diagnosis-one {
+		width:90% !important;
+	}
+	
+	/* Report of stable case */
+	.report-one {
+	width: 90% !important; }
+	
+	
+	/* Isolation Case */
+	.isolated_case {
+		width:90% !important;
+		height:533px !important;
+	}
+	
+	.diagnosis-four {
+		width:90% !important;
+	}
+	
+	/* Examinations Case */
+	.report-two {
+		width: 80% !important;
+		height:472px !important;
+	}
+	
+	/* Failure Check */
+	.diagnosis-six {
+		width:90% !important;
+		height: 235px !important;
+	}
+	
+	/* Critical */
+	.critical {
+		width:97% !important;
+		height: 274px !important;
+	}
+	
+
+	/* Allergies */
+	.allergies {
+		width:90% !important;
+	}
+	
+	
+	
+}
+
+/* ### Desktops #### */
+@media screen and ( min-width:  1024px ) {
+	
+}
+
+ol, ul{
+	padding-left: 10 !important;
+}
+
+
+@media (max-width :576px){
+	.dagnosis .diagnosis-six{
+		height: 250px !important;
+
+	}
+	.diagnosis-six .btn-next {
+    left: 335px;
+}
+}
+@media (max-width :280px){
+	.dagnosis .diagnosis-six{
+		min-height: 280px !important;
+
+	}
+	.diagnosis-six .btn-next {
+    left: 100px !important;
+}
+}
+@media (max-width :768px){
+	.dagnosis .diagnosis-six{
+		height: 280px !important;
+
+	}
+	.diagnosis-six .btn-next {
+    left: 335px;
+}
+}
+

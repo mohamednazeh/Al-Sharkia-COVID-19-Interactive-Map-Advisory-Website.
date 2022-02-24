@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="k-webkit k-webkit91">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/Bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/master.css">
+    <link rel="stylesheet" href="/stylesheets/user/profile.css">
+    <title>Profile</title>
+</head> 
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <h5 class="h4"><span>El Sharqia </span>Health Care</h5>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/diagnose">Diagnose Service</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/map">El-Sharqia Health Map</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://egcovac.mohp.gov.eg/#/home">Vaccine Conveys</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/logout">Logout</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/user/profile"><span style="color: blueviolet;font-weight: 600;">Hello</span> <%= userInfo.name %></a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    
+<div class="profile">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-2">
+                
+            </div>
+            <div class="col-lg-8">
+                <div class="right">
+                    <h6 class="text-uppercase">Accountant Information</h6>
+                <img src="/images/profile/profile.jpg" class="img-fluid " alt="profile image">
+                <input type="file" class="choose">
+                <form action="/user/update" method="POST" class="name">
+                <!-- <h3 class="h4">Account Information</h3> -->
+                    <div class="mb-3 row">
+                        <label class="col-3">User name:</label>
+                        <input type="text"  class="form col-7" name="user_name" value="<%= userInfo.name %>">
+                       </div>
+                    <div class="mb-3 row">
+                        <label class="col-3">e-mail:</label>
+                        <input type="email"  class="form col-7" name="user_email" value="<%= userInfo.email %>">  
+                     </div>  
+                     <div class="mb-3 row">
+                        <label class="col-3">gender:</label>
+                        <input type="text"  class="form col-7" name="user_gender" value="<%= userInfo.gender %>">  
+                     </div>  
+                     <div class="mb-3 row">
+                        <label class="col-3">age:</label>
+                        <input type="text"  class="form col-7" name="user_age" value="<%= userInfo.age %>">  
+                     </div>  
+                     <div class="mb-3 row">
+                        <label class="col-3">birth data:</label>
+                        <input type="date"  class="form col-7" name="user_birthdate" value="<%= userInfo.birth_date %>">  
+                     </div>  
+                     <div class="mb-3 row">
+                        <label class="col-3">street:</label>
+                        <input type="text"  class="form col-7"name="user_street" value="<%= userInfo.street %>">  
+                     </div>  
+                     <div class="mb-3 row">
+                        <label class="col-3">city:</label>
+                        <input type="text"  class="form col-7" name="user_city" value="<%= userInfo.city %>">  
+                     </div>  
+                     <div class="mb-3 row">
+                        <label class="col-3">phone:</label>
+                        <input type="text"  class="form col-7" name="user_phone" value="<%= userInfo.phone %>">  
+                     </div> 
+                     <div class="mb-3 row">
+                        <label class="col-3"></label>
+                        <input type="submit"  class="form col-7" value="Update">
+                     </div>  
+                     <div class="mb-3 row forgot-password">
+                        <a href="/user/forgot-password"><label class="col-3 ">Forgot Password?</label></a>
+                     </div>
+                </form>
+                
+                <!-- <form action="" class="pass">
+                    <h4 class="h5">Change Password</h4>
+                    <div class="mb-3 row">
+                        <label class="col-3">Current Password</label>
+                        <input type="password"  class="form col-7" placeholder="">
+                       </div>
+                       <div class="mb-3 row">
+                        <label class="col-3">New Password</label>
+                        <input type="password"  class="form col-7">
+                       </div>
+                       <div class="mb-3 row">
+                        <label class="col-3">Confirm Password</label>
+                        <input type="password"  class="form col-7">
+                       </div>
+                       <div class="btn-signin">
+                        <button type="submit" class="btn text-uppercase">Save</button>
+                        </div>
+                </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-----------------------Bootstrap JS--------------------->
+<script src="/javascripts/Bootstrap/bootstrap.js"></script>
+<!-------------------------------------------------------->
+<script src="/javascripts/Bootstrap/popper.js"></script>
+<!-------------------------------------------------------->
+</body>
+</html>

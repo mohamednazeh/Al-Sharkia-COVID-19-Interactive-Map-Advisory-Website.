@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Elsharkia Healthcare</title>
+  <style>
+    * {
+      padding:0px;
+      margin:0px;
+    }
+    #map{
+     position: absolute;
+     top: 0 ;
+     bottom: 0;
+     height:100%;
+     width:100%;
+        
+    }
+    .content {padding :5px;
+
+}
+    .address{
+      color: rgb(79, 27, 223);
+      font-size: 1px;}
+
+  .cnt {
+    padding:10px;
+    text-align: center;
+
+  }
+  </style>
+</head>
+<body>
+  <h1>Elsharkia Healthcare</h1>
+  <div id="map"></div>
+  <div style="display: none;" id="hospitals-data">
+    <%= hospitalData %>
+  </div>
+  <div style="display: none;" id="vaccineConveys-data">
+    <%= vaccineData %>
+  </div>
+  
+  
+  
+  <script>
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:10,
+        center:{lat:30.62,lng:31.63}
+      }
+
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      // Listen for click on map
+     // google.maps.event.addListener(map, 'click', function(event){
+        // Add marker
+       // addMarker({coords:event.latLng});
+//      });
+
+// move pin and current location
+infoWindow = new google.maps.InfoWindow;
+        geocoder = new google.maps.Geocoder();
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                map.setCenter(pos);
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(pos),
+                    map: map,
+                    title: 'موقعك الحالي'
+                });
+                markers.push(marker);
+                marker.addListener('click', function() {
+                    geocodeLatLng(geocoder, map, infoWindow,marker);
+                });
+                // to get current position address on load
+                google.maps.event.trigger(marker, 'click');
+            }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+      
+      
+      // Handle location errors
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+          browserHasGeolocation
+            ? "Error: The Geolocation service failed."
+            : "Error: Your browser doesn't support geolocation."
+        );
+        infoWindow.open(map);
+      }
+      
+      //  Add marker
+      var marker = new google.maps.Marker({
+        position:{lat:42.4668,lng:-70.9495},
+        map:map,
+        icon:'https://www.freepik.com/free-vector/hospital-building-ambulance-car_8924468.htm#page=1&query=hospital%20icon&position=3'
+      });
+
+      var infoWindow = new google.maps.InfoWindow({
+        content:'<h1>Lynn MA</h1>'
+      });
+  
+    
+      // Marker Handlers
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
+      
+      
+      // Markers
+      var markers = [];
+      // Get Data of Hospitals
+      const hospitalData = document.getElementById("hospitals-data")
+      const hospitalVls = JSON.parse(hospitalData.innerText);
+      // console.warn(hospitalVls);
+      // Push Hospitals
+      const vaccineConveysData = document.getElementById("vaccineConveys-data")
+      const vaccineConveysVls = JSON.parse(vaccineConveysData.innerText);
+      //  console.table( vaccineConveysVls);
+      // Push Vaccine Conveys
+      
+      // Handle coordinates of @Hospitals or @Conveys
+      let handleCoordinates = (coordinates) => {
+        const crdVls = coordinates.split(","); ["", ""]
+        return {
+          lat: parseFloat(crdVls[0]),
+          lng: parseFloat(crdVls[1]),
+        }
+      }
+      
+      // Initialize markers of @Hospitals
+      const initHospitalsMarkers = () => {
+        for (let y = 0; y < hospitalVls.length; y++) {
+          // console.log(hospitalVls[y]);
+          markers.push({
+            coords: handleCoordinates(hospitalVls[y].coordination),
+            "iconImage":'http://maps.google.com/mapfiles/ms/micons/hospitals.png',
+            content: `<div dir='rtl' class='cnt'><p>${hospitalVls[y].H_name}</p><p>${hospitalVls[y].Street}</P><p> حى الحكماء</p><p>${hospitalVls[y].City}</p> <p> الشرقية</p><p>number of beds: ${hospitalVls[y].Num_beds}</p><p>Number of intensive care: ${hospitalVls[y].Num_intensive_case_beds} </p></div><a href='' target='_blank'>لا يوجد رابط</a>`
+          })
+        }
+      }
+      
+    // Initialize markers of @Vaccine Conveys
+    const initVaccineConveysMarkers = () => {
+      for (let y = 0; y < vaccineConveysVls.length; y++) {
+        // console.log(hospitalVls[y]);
+        markers.push({
+          coords: handleCoordinates(vaccineConveysVls[y].coordination),
+          "iconImage":'http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png',
+          content:`<div dir='rtl' class='cnt'><p>${vaccineConveysVls[y].center}</p><p>${vaccineConveysVls[y].address}</P><p>${vaccineConveysVls[y].location_name}</p> <p> الشرقية</p><P>Start Date: ${vaccineConveysVls[y].Start_date}</P><P>End Date: ${vaccineConveysVls[y].End_date}</P></div><a href='' target='_blank'>لا يوجد رابط</a>`,   
+        })
+      } 
+    }
+    initHospitalsMarkers()
+    // console.log(markers);
+    initVaccineConveysMarkers()
+    
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+        
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJfuT-Pfcku06PzhcvInk9j78saQ04sk&callback=initMap">
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

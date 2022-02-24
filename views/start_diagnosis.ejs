@@ -1,0 +1,311 @@
+
+  <!-- Start Navbar -->
+  <%- include("./partials/navbar.ejs")  %> 
+  
+  <div class="dagnosis">
+    <!-- + Diagnose Service Window -->
+    <div class="content diagnose-start" >
+      <div class="overlay"></div>
+      <aside class="start-daignosis" expPg="expService">
+        <h2>Diagnose Service</h2>
+        <p>Diagnostic Services facilitates the provision of timely, cost-effective,
+          and high quality diagnostic care in safe and secure environments. It includes the clinical
+           services of Pathology and Laboratory Medicine, Radiology, and Nuclear Medicine .
+        </p>
+        <div class="btn">
+              <a href="/diagnose/start"><button type="button" class="btn-start">Get Started</button></a>
+              <a href="/diagnose/complete"><button type="button" class="btn-complete">Complete</button></a>
+        </div>
+      </aside>  
+  </div>
+    <!-- - Diagnose Service Window -->
+    <!-- ------------------------------------------------------ -->
+    <!-- + Start All questions of expert system service -->
+    <!-- 1.1)Start Prime Check  -->
+    <!-- <aside expPg="primeCheck"> -->
+        <aside class="diagnosis-one" expPg="primeCheck">
+            <div class="conatiner">
+              <ol>
+                <li>
+            <p class="qst">Have you been directly exposed to a confirmed case of covid-19?</p>
+            <div class="radio-btn">
+                <input type="radio"  name="qes1" id="yes" value="yes">
+                <label for="yes">Yes</label>
+                <input type="radio"  name="qes1" id="no" value="no">
+                <label for="No">No</label>
+            </div>
+                </li>
+                <li>
+                    <p class="qst">Have you recently been an area with confirmed cases of covid-19 ?</p>
+                    <div class="radio-btn">
+                        <input type="radio"  name="qes2" id="yes" value="yes">
+                        <label for="yes">Yes</label>
+                        <input type="radio"  name="qes2" id="no" value="no">
+                        <label for="No">No</label>
+                    </div>
+                </li>
+            </ul>
+            <div class="btn">
+                <button onclick="expSysGuider({selectedPgName: 'fluLikeSymptoms', mission: 'back'})" class="btn-prev"> Prev</button>
+                <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="btn-next">Next</button>
+            </div>
+            </div>
+        </aside>
+    <!-- </aside> -->
+    <!-- 1.1)End Prime Check -->
+    <!-- ------------------------------------------------------ -->
+            <div class="content-report">
+                <aside class="report-one" expPg="stableCase">
+                    <h2>Report</h2>
+                    <ul class="list-style">
+                        <li>You don`t have flu-like symptoms and you have not been exposed to Covid-19.</li>
+                        <li>You are not at significant risk of Covid-19. Take all necessary precautions to monitor your health.</li>
+                        <li>Congratulations you don`t have any type of risk.</li>
+                    </ul>
+                    <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'primeCheck', mission: 'back'})">Back</button>
+                    <a href="/diagnose/end"><button class="btn-next" >Ok</button></a>
+                </aside>
+            </div>
+        <!-- </aside> -->
+        <!-- ------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------ -->   
+            <div class="content-report">
+              <aside class="report-three isolated_case" exppg="isolatedCase" style="">
+                <h2>Report</h2>
+                <ul class="list-style">
+                    <li>&gt;&gt; <u>You have Symptoms like flu but have not been exposed to Covid-19</u> Or <u> You don`thave flu-like Symptoms but You have been exposed to Covid-19.</u></li>
+                    <li>&gt;&gt; Isolate in your home from <u>10 to 14 days</u>, Through these days take these medicines...</li>
+                    <li>
+                      <p class="medicine-type">
+                        + Supplements
+                      </p><br>
+                      <p>
+                        Zinc 
+                        <span>
+                          50mg daily
+                        </span>
+                      </p>
+                      <p>
+                        Vitamin C 
+                        <span>
+                          1 gm daily 
+                        </span>
+                      </p>
+                      <p>
+                        Lactoferrin 
+                        <span>
+                          2 sachets daily
+                        </span>
+                      </p>
+                      <p>
+                        N-Acetyl Cysteine 
+                        <span>
+                          200mg TDS
+                        </span>
+                      </p>
+                    </li>
+                    <li>
+                      <p class="medicine-type">
+                       + Antipyretics
+                      </p><br />
+                      <span>
+                        <b><u> Choose One </u></b>
+                      </span>
+                      <br>
+                      <p>
+                        Paracetamol
+                        <span>
+                          500 gm PRN or up to 2 gm/day
+                        </span>
+                      </p>
+                      <p>
+                        panadol  
+                        <span>
+                          1000 mg twice in day
+                        </span>
+                      </p>
+                      <p>
+                        Novandol
+                        <span>
+                          1000 mg twice in day
+                        </span>
+                      </p>
+                    </li>
+                    <li>Through these 14 day, you should get back to diagnose service and click complete button to continue the dignose.</li>
+                </ul>
+                <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'primeCheck', mission: 'back'})">Back</button>
+                <a href="/diagnose/done/isolationCase"> <button class="btn-next"> Ok</button></a>
+            </aside>
+            </div>
+            <div class="content-report" >
+                <aside class="report-two" expPg="examinationsCase">
+                    <h2>Report</h2>
+                    <ul class="list-style">
+                        <span style="font-weight: bold;color: #465675;">Suspected case</span><br>
+                        <span>You have symptoms like flu and You have been exposed to Covid-19. <br></span>
+                        <li> You must use a Pulse Oximeter or any other device to measure oxygenation and heart rate, and
+                          make a CT scan on the chest. After that return to the diagnose service and click the Complete button to continue the diagnosis.</li>
+                    </ul>
+                    <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'primeCheck', mission: 'back'})">Back</button>
+                    <a href="/diagnose/done/examinationsCase"> <button class="btn-next" > Ok</button></a>
+                </aside>
+            </div>
+       
+        <!-- + All pages of expert system Diagnose Service  -->
+        <!-- )+2 Forms Items -->
+          <!-- )+2.1  -->
+          <aside class="container frm-exp current"  id="flu"  expPg="fluLikeSymptoms">
+            <div>
+              <!-- The title of the form -->
+              <header class="frm-title">
+                <p>
+                  Symptoms Form
+                </p>
+              </header>
+              <!-- Questions of form -->
+              <ul class="frmqstns" style="list-style: none;">
+                <!-- )+ All questions of form -->
+                <div class="frm-qstn">
+                  <li>
+                    1. Do you have a <u >fever</u>?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer1" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer1" value="No"> No</section>
+                  </div>
+                </div>         
+                <div class="frm-qstn">
+                  <li>
+                    2. Do you have a <u >fatigue</u>?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer2" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer2" value="No"> No</section>
+                  </div>
+                </div>          
+                <div class="frm-qstn">
+                  <li>
+                    3. Do you have a <u>cough</u>?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer3" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer3" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                    4. Do you have a <u>Sore Throat </u>?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer4" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer4" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                   5. Do you have a <u>Headaches</u> ?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer5" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer5" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                    6. Do you have a <u>Body Aches</u> ?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer6" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer6" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                  7. Do you have a <u>Red, Swollen Eyes</u>?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer7" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer7" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                    8. Do you have a <u>Runny Nose</u> ?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer8" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer8" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                    9. Do you have a <u>Shortness or Breath</u> ?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer9" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer9" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                    10. Do you have a <u>Dierrhea</u> and/or <u>vomiting</u> ?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer10" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer10" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                    11. Do you have a <u>Loss of taste</u> and / or <u>smell</u> ?
+                  </li>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer11" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer11" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <li>
+                    12. Do you have a <u>Skin Rashes</u> ?
+                  </li>
+                  
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer12" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer12" value="No"> No</section>
+                  </div>
+                </div>
+                <!-- -All questions of form -->
+              </div>
+              
+              <footer class="frm-navigation"> 
+                <div>
+                  <button onclick="expSysGuider({selectedPgName: 'expService', mission: 'back'})" class="prev">Prev</button>
+                  <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="next">
+                    Next
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </aside>
+          <!-- )+2.2  -->
+          <!-- )+2.3 -->
+          <!-- )+2.4 -->
+          <!-- End Forms -->
+          <!-- + All pages of expert system  Diagnose Service -->
+    <!-- + End Forms of expert system service -->
+</div>
+</div>
+
+   

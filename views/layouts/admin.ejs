@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  <%= (typeof title != "undefined" ? title : "Unknown") %> </title> 
+  
+  <link rel="stylesheet" href="/stylesheets/normalize.css">
+  <!-- Dashboard -->
+  <link rel="stylesheet" href="/stylesheets/admin/dashboard.css">
+  
+  <link rel="stylesheet" href="/stylesheets/admin/manage.css">
+  <link rel="stylesheet" href="/stylesheets/admin/charts.css">
+  
+</head><body>
+
+ <aside class="dashboard-cntr">
+  <aside class="navbar" style="text-align: left; padding:20px">
+    <p class="title">
+      Admin Dashboard
+    </p>
+  </aside>
+  <aside class="admin-dashboard">
+    <aside class="dashboard-settings">
+      <div class="settings-cntrol">
+        <div class="settings_cntrol_close" id="close-settings" onclick="handleSettingsArrows(true)"></div>
+        <div class="settings_cntrol_open" id="open-settings" onclick="handleSettingsArrows()"></div>
+      </div>
+      
+      <div class="settings-tools" style="display: none;">
+        <div class="admin-avatar">
+          <img src="../../images/admin/07.jpg" alt="admin avatar" class="admin-avatar">
+          <p class="admin-name">
+            Adminstration
+          </p>
+        </div>
+       
+        <div class="tools">
+          <div>
+            <p class="tool_name" optionsFTool="null">
+              <a href="/s-p!187/dashboard">Dashboard</a>
+            </p>
+            <!-- <section class="tool_options dashboardTool" >
+              <ul>
+                <li>
+                  None
+                </li>
+              </ul>
+            </section> -->
+          </div>
+          <div>
+            <p class="tool_name" optionsFTool="toolsTools">
+              Tools
+            </p>
+            <section class="tool_options toolsTools">
+              <ul>
+                <li>
+                  to do
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <p class="tool_name" optionsFTool="adminTools">
+              Admin
+            </p>
+            <section class="tool_options adminTools">
+              <ul>
+                <li>
+                  <a href="/admin/database/manage">Manage</a>
+                </li>
+                <li>
+                  Notes
+                </li>
+              </ul>
+            </section>
+          </div>
+          <!-- )+4 Products Tool -->
+          <div>
+            <p class="tool_name" optionsFTool="null">
+              Products
+            </p>
+            <!-- <section class="tool_options productsTool">
+              <ul>
+                <li>
+                  Manage
+                </li>
+                <li>
+                  Notes
+                </li>
+              </ul>
+            </section> -->
+          </div>
+          <!-- )+5 Customers Tool -->
+          <div>
+            <p class="tool_name" optionsFTool="null">
+              Customers
+            </p>
+            <!-- <section class="tool_options customerTool">
+              <ul>
+                <li>
+                  Manage
+                </li>
+                <li>
+                  Notes
+                </li>
+              </ul>
+            </section> -->
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+    <aside class="dashboard-cnt">
+      <%- body %> 
+    </aside>
+  </aside>
+ </aside>
+  
+  <script src="/javascripts/admin/admin.js"></script>
+</body></html>

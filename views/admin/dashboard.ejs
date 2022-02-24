@@ -1,0 +1,166 @@
+
+<div class="databaseData chart-1" >
+  <canvas id="myChart"></canvas>
+</div>
+
+<div class="running-work">
+  <section class="1px 1px 8px #e88181;">
+  
+    <div class="sctn-cntr">
+      <div>
+        <img src="../../images/admin/users.png" alt="">
+      </div>
+      <div>
+        <span class="number">
+          400
+        </span>
+        <br>
+        <span class="name">
+          Registers
+        </span>
+      </div>
+    </div>
+  </section>
+  <section style="background-color: cadetblue !important; box-shadow: 1px 1px 8px cadetblue;">
+    <div class="sctn-cntr">
+      <div>
+        <img src="../../images/admin/sales.png" alt="">
+      </div>
+      <div>
+        <span class="number">
+          0
+        </span>
+        <br>
+        <span class="name">
+          Sales
+        </span>
+      </div>
+    </div>
+  </section>
+  <section style="background-color: coral !important; box-shadow: 1px 1px 8px coral;">
+    <div class="sctn-cntr">
+      <div>
+        <img src="../../images/admin/patients.jpg" alt="">
+      </div>
+      <div>
+        <span class="number">
+          200
+        </span>
+        <br>
+        <span class="name">
+          Patients
+        </span>
+      </div>
+    </div>
+  </section>
+  <section style="background-color: cornflowerblue !important; box-shadow: 1px 1px 8px cornflowerblue;">
+  
+    <div class="sctn-cntr">
+      <div>
+        <img src="../../images/admin/Visitors.png" alt="">
+      </div>
+      <div>
+        <span class="number">
+          2000
+        </span>
+        <br>
+        <span class="name">
+          Visitors
+        </span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- <div class="tablesData">
+  <div class="chart-cntr"> -->
+    <!-- <div class="chart-1 chart-2">
+      <canvas id="admin-chart"></canvas>
+    </div>
+    <p>
+      Admin
+    </p> -->
+  </div>
+  <!-- <div>
+    <canvas id="hospitals-chart"></canvas>
+  </div> -->
+  <!-- <div>
+    <canvas id="users-chart"></canvas>
+  </div> -->
+<!-- </div>
+
+<div id="user-chart">
+
+</div> -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const data = {
+    labels: [
+      'Admin',
+      'User',
+      'Hospitals',
+      'Vaccine Conveys',
+      'Specialization',
+      'Blood_bank',
+      'Medicine',
+      
+    ],
+    datasets: [{
+      label: 'Tables of Database',
+      data: [300, 50, 100, 100, 700, 0, 20],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        '#ca59c3',
+        'blue',
+        'green',
+        'pink',
+      ],
+      hoverOffset: 4
+    }]
+  };
+  const config = {
+    type: 'pie',
+    data: data,
+  };
+  const data1 = {
+    labels: [
+      'Admin_id',
+      'User',
+      'Hospitals',
+      'Vaccine Conveys'
+    ],
+    datasets: [{
+      label: 'Tables of Database',
+      data: [300, 50, 100, 100],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        '#ca59c3',
+      ],
+      hoverOffset: 4
+    }]
+  };
+  const config1 = {
+    type: 'doughnut',
+    data: data1,
+  };
+  
+
+  // === include 'setup' then 'config' above ===
+  var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+  
+  // var myChart = new Chart(
+  //   document.getElementById('admin-chart'),
+  //   config1
+  // );
+
+  
+
+</script>

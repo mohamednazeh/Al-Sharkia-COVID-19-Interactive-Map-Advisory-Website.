@@ -1,0 +1,210 @@
+body{
+  padding: 0;
+  margin: 0;
+  background-image: url('/images/10.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+.selectedHospitals {
+  position: relative;
+  width: 50%;
+  min-height: 200px;
+  text-align: justify;
+  margin: auto 50%;
+  margin-top: 300px;
+  transform: translate(-50%, -50%);
+  box-shadow: 6px 10px 20px var(--bs-light);
+}.selectedHospitals header {
+  background-color: #C23C39;
+  color: var(--bs-light);
+  height: 60px;
+  line-height: 60px;
+  font-size: 17.5px;
+  padding-left: 31px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+  box-shadow: 5px 11px 10px var(--bs-light);
+}
+
+.selectedHospitals header p::before {
+  content: "";
+  position: relative;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #C23C39;
+  display: inline-block;
+  margin-right: 9px;
+  background-color:#C23C39 ;
+  
+}
+
+.selectedHospitals .selectedHospitals_sctns {
+  /* padding: 31px; */
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+
+}
+.selectedHospitals .btn {
+  position: relative;
+  width: 214px;
+  height: 36px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--bs-dark);
+  background: var(--bs-light);
+  border: 1px solid var(--bs-dark);
+  border-radius: 7px;
+  transition: all .3s linear;
+  box-shadow: 6px -4px 0px var(--bs-dark);
+  margin: 30px 20px 20px 50px ;
+}
+.selectedHospitals .btn:hover {
+  color:var(--bs-dark);
+  background:var(--bs-light);
+}
+.selectedHospitals .btn-dsc {
+  font-size: 18px;
+  padding: 6px 50px;
+}
+.selectedHospitals .available_hospitals {
+  font-size: 16px;
+  border-radius: 6px;
+  background: var(--bs-white);
+  color: black;
+  width: 66%;
+  border-color: var(--bs-dark);
+  text-transform: capitalize;
+  box-shadow: none;
+}.selectedHospitals .available_hospitals p::before {
+  background: #C23C39;
+}.selectedHospitals .available_hospitals_list {
+  padding:5px;
+}.selectedHospitals .available_hospitals_list .warn {
+  font-size: 18px;
+  color: #C23C39;
+  background: #fffcc2;
+  padding: 5px 0px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: 500;
+}.selectedHospitals .available_hospitals_list p.warn span {
+  display: inline-block;
+  padding: 4px 11px;
+  background:white;
+  border-radius: 5px;
+  color: var(--bs-dark);
+  font-weight: bold;
+  transition: all .3s linear;
+  cursor: pointer;
+  border: 1px solid black;
+}.selectedHospitals .available_hospitals_list p.warn span:hover {
+  background:white;
+  color:var(--bs-red)
+}.selectedHospitals .available_hospitals_list ul {
+  padding: 0px 68px;
+  list-style: conic-gradient;
+}.selectedHospitals .available_hospitals_list ul > li {
+  position: relative;
+  margin: 6px 0px;
+  z-index: 13;
+  padding: 0px 13px;
+  text-transform: capitalize;
+  font-size: 1rem;
+}.selectedHospitals .available_hospitals_list ul > li::before {
+  position: absolute;
+  display: inline-block;
+  content: "1";
+  border: 1px solid #C23C39;
+  background: #C23C39;
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+  left: -23px;
+  top: 2px;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  line-height: 18px;
+  font-size: .9rem;
+}.selectedHospitals .available_hospitals_list ul > li:nth-child(2)::before {
+  content: '2';
+}.selectedHospitals .available_hospitals_list ul > li:nth-child(3)::before {
+  content: '3';
+}.selectedHospitals .available_hospitals_list ul > li:nth-child(4)::before {
+  content: '4';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(5)::before {
+  content: '5';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(6)::before {
+  content: '6';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(7)::before {
+  content: '7';
+}.selectedHospitals .available_hospitals_list ul > li:nth-child(8)::before {
+  content: '8';
+}.selectedHospitals .available_hospitals_list ul > li:nth-child(9)::before {
+  content: '9';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(10)::before {
+  content: '10';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(11)::before {
+  content: '11';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(12)::before {
+  content: '12';
+}.selectedHospitals .available_hospitals_list ul > li:nth-child(13)::before {
+  content: '13';
+}.selectedHospitals .available_hospitals_list ul > li:nth-child(14)::before {
+  content: '14';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(15)::before {
+  content: '15';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(16)::before {
+  content: '16';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(17)::before {
+  content: '17';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(18)::before {
+  content: '18';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(19)::before {
+  content: '19';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(20)::before {
+  content: '20';
+}
+
+.selectedHospitals .available_hospitals_list ul > li:nth-child(21)::before {
+  content: '21';
+}
+
+.selectedHospitals .available_hospitals_list ul > li:nth-child(22)::before {
+  content: '22';
+}
+
+.selectedHospitals .available_hospitals_list ul > li:nth-child(23)::before {
+  content: '23';
+}
+
+.selectedHospitals .available_hospitals_list ul > li:nth-child(24)::before {
+  content: '24';
+}
+
+.selectedHospitals .available_hospitals_list ul > li:nth-child(25)::before {
+  content: '25';
+}
+
+.selectedHospitals .available_hospitals_list ul > li:nth-child(26)::before {
+  content: '26';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(27)::before {
+  content: '27';
+}
+.selectedHospitals .available_hospitals_list ul > li:nth-child(28)::before {
+  content: '28';
+}

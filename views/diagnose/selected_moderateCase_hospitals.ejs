@@ -1,0 +1,51 @@
+
+
+  
+
+  <%- include("../partials/navbar.ejs")  %> 
+  
+  <div id="availableHospitals" hidden>
+    <%= availableHospitals %> 
+  </div>
+  <div class="selectedHospitals">
+    <header>
+      <p>
+        <span></span>Define The Available Hospitals.
+      </p>
+    </header>
+    <div class="selectedHospitals_sctns">
+      <section class="myLocation">
+        <button class="btn" id="getLocation" onclick="getLocation()">
+          GET MY LOCATION
+        </button>
+        <!-- <button type="button" onclick="distance()"> Distance </button> -->
+        <p class="btn-dsc">
+          Allow us to know <b><u>your location</u></b> to <b><u>select the nearest hospitals &
+          calculate the available hospitals for you</u></b>.
+        </p>
+      </section>
+      <section>
+        <header class='available_hospitals'>
+          <p>The Available Hospitals for now: </p>
+        </header>
+        <div class="available_hospitals_list">
+          <p class="warn" ><!--hidden-->
+            You need firstly click the <span onclick="getLocation()" >GET MY LOCATION</span> to get the available and 
+            nearest hospitals.
+          </p>
+        </div>       
+      </section>
+      <section class="show_map_info" hidden> <!-- document.querySelector('.show_map_info').hidden = false; -->
+        <button class="btn">
+          SHOW MAP
+        </button>
+        <p class="btn-dsc">
+          Display <u><b>more informations about hospitals.</b></u>
+        </p>
+      </section>
+    </div>
+    <footer>
+    </footer>
+  </div>
+  <script src="/javascripts/map/map.js"></script>
+  

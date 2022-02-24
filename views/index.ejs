@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="/stylesheets/Bootstrap/bootstrap.css"/>
+    <!-- NORMALIZE -->
+    <link rel="stylesheet" href="/stylesheets/normalize.css"/>
+<!-- MASTER -->
+    <link rel="stylesheet" href="/stylesheets/master.css"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <title>Al Sharkia Health Care</title>
+</head>
+    <!-- Start loading  -->
+    <span class="up">
+        <i class="fas fa-chevron-circle-up"></i>
+    </span>
+    <!-- End Loading  -->
+    <!--Start Settings Box-->
+    <div class="setting-box">
+        <div class="toggle-settings">
+            <!-- <i class="fas fa-cog"></i>     -->
+           <div class="fas">
+            <img src="/images/icon/settings.png" width="25" alt="">
+           </div>
+        </div>
+        <div class="settings-container">
+            <div class="option-box" >
+                <h4>Color Option</h4>
+                <ul class="color-list">
+                    <li class="active" data-color="#427AA7" ></li>
+                    <li data-color="#C23C39"></li>
+                    <li data-color="#3DB599"></li>
+                    <li data-color="#F4A107"></li>
+                    <li data-color="#4CAF50"></li>
+                </ul>
+            </div>
+            <div class="option-box">
+                <h4>Backgound Option</h4>
+              <div class="random-background">
+                <span class="yes active" data-background="yes">Yes</span>
+                <span class="no" data-background="no">No</span>
+              </div>
+
+            </div>
+        </div>
+    </div>
+    <!--------------------End Settings Box------------------->
+
+
+    <!------------------------------------------------------->
+
+    <!------------------- Start Nav Bullets------------------->
+    <div class="bullets">
+        <div class="bullet" data-section=".sec">
+            <div class="tool">Recent</div>
+        </div>
+        <div class="bullet" data-section=".service">
+            <div class="tool">Our Services</div>
+        </div>
+        <div class="bullet" data-section=".symp">
+            <div class="tool">Symptoms</div>
+        </div>
+        <div class="bullet" data-section=".steps">
+            <div class="tool">Steps To Protect</div>
+        </div>
+        
+        <div class="bullet" data-section=".contact-us">
+            <div class="tool">Contact US</div>
+        </div>
+    </div>
+    <!-----------------End Nav Bullets----------------------->
+    <!------------------------------------------------------->
+    <!-----------------Start Landing Page-------------------->
+    <div class="landing-page">
+        <div class="overlay"></div>
+        <%- include("./partials/navbar.ejs") %> 
+        <div class="inroduction-text">
+            <h1 id="home-one">Save YourSelf Save The World.</h1>
+            <p id="home-two">Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and requiring special treatment. Older people, and those with underlying medical problems            </p>
+        </div>
+    </div>
+    <!-----------------End Landing Page---------------------->
+    <!------------------------------------------------------->
+    <!------------------Start Section Counter---------------->
+<div class="sec text-center">
+    <h3 class="text-center" id="recent">RECENT STATISTICS</h3>
+    <section class="section-lg pt-0">
+        <div class="container-fluid">
+             <div class="row">
+                 <div>
+                     <div class="row space-y-40 justify-content-center">
+                         <div class="col-md-2 col-sm-6">
+                             <div class="counter-single">
+                                 <h4 class="counter-title" id="case">Confirmed cases</h4>
+                                 <span class="counter-amount" id="cases">
+                                    <%= covidData.newCases %> 
+                                 </span>
+                                 <span class="counter-date" id="update">
+                                    <%= covidData.latestUpdateDate %> 
+
+                                 </span>
+                             </div>
+                         </div>
+                         <div class="col-md-2 col-sm-6">
+                             <div class="counter-single counter-single-alt">
+                                 <h4 class="counter-title" id="death">Confirmed deaths</h4>
+                                 <span class="counter-amount" id="deaths">
+                                    <%= covidData.newDead %>
+                                 <span class="counter-date"><%= covidData.latestUpdateDate %> 
+                                 </span>
+                                 </span>
+                                 <span class="counter-date" id="update"></span>
+                             </div> 
+                         </div>
+                         <div class="col-md-2 col-sm-6">
+                             <div class="counter-single">
+                                 <h4 class="counter-title" id="recovered">Total Recovered</h4>
+                                 <span class="counter-amount" id="recovered">
+                                    <%= covidData.totalCured %>  
+                                    <span class="counter-date"> <%= covidData.latestUpdateDate %> 
+                                    </span>
+                                 </span>
+                                 <span class="counter-date" id="update"></span>
+                             </div>
+                         </div>
+                         <div class="col-md-2 col-sm-6">
+                             <div class="counter-single counter-single-alt">
+                                 <h4 class="counter-title" id="affected">Affected Territories</h4>
+                                 <span class="counter-amount" id="critical">
+                                    <%= covidData.totalInfected %>
+                                 </span>
+                                 <span class="counter-date"> <%= covidData.latestUpdateDate %> 
+                                 </span>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-sm-6">
+                            <div class="counter-single">
+                                <h4 class="counter-title" id="total-dead">
+                                    Total Dead
+                                </h4>
+                                <span class="counter-amount" id="critical">
+                                   <%= covidData.totalDead %>
+                                 <span class="counter-date"> <%= covidData.latestUpdateDate %> 
+                                 </span>
+                                </span>
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </section>
+</div>
+    <!--------------------End Section Counter---------------->
+    <!-----------------Start About US------------------------>
+    
+                <div class="about-us">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="img-box">
+                                    <img src="../images/About/about.png" alt="..."/>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="info-box">
+                                    <p class="title" id="about">ABOUT COVID-19</p>
+                                    <h3 id="about-covid">About Coronavirus ( COVID-19 )</h3>
+                                    <p class="crona" id="corno">Coronavirus disease (COVID-19) :  is an infectious disease caused by a newly discovered coronavirus. Most people infected with the COVID-19 virus will experience mild to moder ate respiratory illness and recover without requiring special treatment.</p>
+                                    <div class="list">
+                                    <p class="text-primary" id="about-text">There are several measures you can take to protect yourself from #COVID19.</p>
+                                    <ul class="list-unstyled row">
+                                       <img src="/images/icon/checked.png" class="col-1" alt=""><li id="about-one" class="col-11">Wash your hand properly for 20 seconds</li>
+                                       <img src="/images/icon/checked.png" class="col-1"  alt=""> <li id="about-two" class="col-11">Do not touch your face</li>
+                                       <img src="/images/icon/checked.png" class="col-1"  alt=""><li id="about-three" class="col-11">Wear mask</li>
+                                       <img src="/images/icon/checked.png" class="col-1"  alt=""><li id="about-four" class="col-11">Avoid Social gatherings</li>
+                                       <img src="/images/icon/checked.png" class="col-1"  alt=""> <li id="about-five" class="col-11">Rubbing your hand with an alcohol-based sanitizer</li>
+                                       <img src="/images/icon/checked.png" class="col-1"  alt=""><li id="about-six" class="col-11">Avoid shaking hands to help protect yourself and others from</li>
+                                    </ul>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!--------------------End About US----------------------->
+    <!------------------------------------------------------->
+    <!--------------------Start Services--------------------->
+<div class="service">
+    <div class="container">
+        <h2 class="text-center" id="our-services">Our Services</h2>
+        <div class="row">
+           <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <img src="/images/Services/diagnose.jpeg" height="250" class="card-img-top" alt=""> 
+                <div class="card-body">
+                    <h4 class="card-title" id="dia">Diagnose Service</h4>
+                    <h6 class="card-subtitle" id="updata">May 2021 </h6>
+                    <p class="card-text" id="dia-text">is the process of determining which disease or condition explains a person's symptoms and signs</p>
+                    <a href="/diagnose" class="card-link" id="read">Read More</a>
+                </div>
+             </div> 
+           </div>
+           <div class="col-md-6 col-lg-4 ">
+            <div class="card">
+                <img src="/images/Services/map.jpeg" height="250" class="card-img-top" alt=""> 
+                <div class="card-body">
+                    <h4 class="card-title" id="map">Map Location</h4>
+                    <h6 class="card-subtitle" id="updata-one">May 2021 </h6>
+                    <p class="card-text" id="map-text">A map of Al Sharqiya Governorate showing the locations of hospitals and vaccination sites</p>
+                    <a href="/map" class="card-link" id="read-one">Read More</a>
+                </div>
+             </div> 
+           </div>
+           <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <img src="/images/Services/vaccine.jpeg" height="250" class="card-img-top" alt=""> 
+                <div class="card-body">
+                    <h4 class="card-title" id="vacc-ser">Vaccine Service</h4>
+                    <h6 class="card-subtitle" id="updata-two">May 2021 </h6>
+                    <p class="card-text" id="vacc-text">A vaccine is a biological preparation that provides active acquired immunity to a particular infectious disease.</p>
+                    <a href="#" class="card-link" id="read-two">Read More</a>
+                </div>
+             </div> 
+           </div>  
+        </div>
+    </div>
+</div>
+    <!-------------------End Services------------------------>
+    <!------------------------------------------------------->
+    <!-------------------Start Symptoms---------------------->
+    <div class="symptoms">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="info-box">
+                        <h3 class="title" id="covide-sym">Covid-19 Symptoms</h3>
+                        <h2 id="qes">What are the symptoms?</h2>
+                        <p id="sys">COVID-19 symptoms range from mild to severe.
+                         It takes 2-14 days after exposure for symptoms to develop. Symptoms may include:</p>
+                <div class="row">
+                    <div class="col">
+                        <p id="fat">Fatigue</p>
+                    </div>
+                    <div class="col">
+                        <p id="fever">Fever</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p id="head">Headache</p>
+                    </div>
+                    <div class="col">
+                        <p id="cough">Cough</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p id="nose">Runny Nose</p>
+                    </div>
+                    <div class="col">
+                        <p id="breath">Difficult breath</p>
+                    </div>
+                </div>
+                    <a href="/diagnose"><button class="btn-sym" id="check">Diagnose Symptoms</button></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="img-box">
+                        <img src="../images/Sympyoms/symptom.png" alt="..."/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------End symptoms----------------------->
+    <!------------------------------------------------------->
+    <!--------------------Start Symptoms Text---------------->
+<div class="symp">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card-body">
+                    <h6 id="fev">Fever</h6>
+                    <p id="fevering">High temperature – this means you feel hot to touch on your chest or back (you do not need to measure your temperature). It is best to seek medical care early.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card-body">
+                    <h6 id="coughing">Cough</h6>
+                    <p id="high-cou">Continuous cough – this means coughing a lot for more than an hour, or 3 or more coughing episodes in 24 hours (if you usually have a cough, it may be worse).</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card-body">
+                    <h6 id="brea" >Shortness of breath</h6>
+                    <p id="high-brea">is an uncomfortable condition that makes it difficult to fully get air into your lungs. Problems with your heart and lungs can harm your breathing.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card-body">
+                    <h6 id="sneezing">Sneezing</h6>
+                    <p id="high-sneez">One of the symptoms of COVID-19 is shortness of breath. Shortness of breath is less common than fever and cough, but happens in about 30% of people.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card-body">
+                    <h6 id="headache">Headache</h6>
+                    <p id="high-head">A headache isn't a common symptom of the virus, but about 14% of people infected with corona have experienced it. It can be pretty intense in nature.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card-body">
+                    <h6 id="sore">Sore Throat</h6>
+                    <p id="high-sore"> Sore Throat is one of the early, mild symptoms of coronavirus. If you suddenly develop a sore throat, it's best to self-isolate for 14 days as precaution,</p>
+                </div>
+            </div>
+        </div>
+        <div class="warning row">
+            <img src="/images/icon/alert.png" class="col-1" alt="">
+            <div class="col-11">
+                <span id="stay">Stay at home and call your doctor :</span> <span id="warring">If you think you have been exposed to COVID-19 and develop a fever and any symptoms, such as cough or difficulty breathing, call your healthcare provider as soon as possible for medical advice.</span>
+            </div> 
+        </div>
+    </div>
+</div>
+    <!------------------End Symptoms Text-------------------->
+    <!------------------------------------------------------->
+    <!-------------------Start Take steps to protect others-->
+    <div class="steps">
+            <div class="content-step">
+                <div class="steps-doc">
+                    <div class="row">
+                    <div class="col-md-9">
+                        <h2 id="step">Take steps to protect others</h2>
+                        <ul class="list-style row">
+                            <img src="/images/icon/checked.png" class="col-1" alt=""><li class="col-11"><span id="stay-one">Stay home if you’re sick:</span> <p id="advice-one">except to get medical care.</p></li>
+                            <img src="/images/icon/checked.png" class="col-1" alt=""><li class="col-11"><span id="stay-two">Cover your mouth and nose:</span> <p id="advice-two">with a tissue when you cough or sneeze (throw used tissues in the trash) or use the inside of your elbow.</p></li>
+                            <img src="/images/icon/checked.png" class="col-1" alt=""><li class="col-11"><span id="stay-three">Wear a facemask if you are sick:</span><p id="advice-three">You should wear a facemask when you are around other people (e.g., sharing a room or vehicle) and before you enter a healthcare provider’s</p></li>
+                            <img src="/images/icon/checked.png" class="col-1" alt=""><li class="col-11"><span id="stay-four">Clean AND disinfect frequently touched surfaces daily:</span><p id="advice-four">This includes phones, tables, light switches, doorknobs, countertops, handles, desks, toilets, faucets, and sinks.</p></li>
+                            <img src="/images/icon/checked.png" class="col-1" alt=""><li class="col-11"><span id="stay-five">Clean the dirty surfaces: </span><p id="advice-five">Use detergent or soap and water prior to disinfection.</p></li>
+                            <img src="/images/icon/checked.png" class="col-1" alt=""><li class="col-11"><span id="stay-six">Stay informed about the local COVID-19 situation:</span> <p id="advice-six">Get up-to-date information about local COVID-19 activity from <a href="">public health officials.</a></p></li>
+                            <img src="/images/icon/checked.png" class="col-1" alt=""><li class="col-11"><span id="stay-seveen">Dedicated, lined trash can: </span><p id="advice-seveen">If possible, dedicate a lined trash can for the ill person. Use gloves when removing garbage bags, and handling & disposing of trash.</p></li>
+                        </ul>
+                    </div>
+                        <div class="col-md-3">
+                            <div class="img-box">
+                        <img src="../images/Steps/steps.png" alt="" srcset="" width="300px">
+                            </div>
+                    </div>
+            </div>
+            </div>
+                </div>
+    </div>
+    <!------------End Take steps to protect others----------->
+    <!------------------------------------------------------->
+    <!------------Start Testemoinal-------------------------->
+    <!-- <div class="testemonials">
+        <div class="container">
+         <div class="ts-box">
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+             <div class="person-info">
+                 <img src="/images/Testemonail/01.jpg" alt="">
+                 <h4>Loinal Messi</h4>
+                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+             </div>
+         </div>
+         <div class="ts-box">
+             <div class="person-info">
+                 <img src="/images/Testemonail/02.jpg" alt="">
+                 <h4>Mohamed Makawy</h4>
+                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+             </div>
+         </div>
+         <div class="ts-box">
+             <div class="person-info">
+                 <img src="/images/Testemonail/03.jpg" alt="">
+                 <h4>Mohamed Makawy</h4>
+                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+             </div>
+         </div>
+     </div>
+     <div class="clearfix"></div>
+     </div> -->
+     <!------------------End Testemoinal---------------------->
+     <!-------------------------------------------------------> 
+    <!-----------Start Important Percautions----------------->
+    <div class="percautions">
+        <div class="over"></div>
+        <div class="container">
+            <div class="card-body">
+                <h2 id="import">Important Percautions</h2>
+                <p class="title" id="title-import">Use of personal protective equipment (e.g., gloves, masks, eyewear). Respiratory hygiene /cough etiquette.</p>
+                     <div class="row">
+                         <div class="col-lg-4 col-md-6">
+                             <div class="info-box mb-xl-30">
+                                 <div class="img-fit">
+                                 <img src="/images/Important/stay-home.jpg" alt="" width="80" height="80">
+                                 </div>
+                                <div class="content-wrap">
+                                 <h5 id="stay-at-home">Stay at Home</h5>
+                                 <p class="text" id="stay-text-one">staying at home did play a dominant role in reducing COVID-19.</p>
+                                </div>
+                             </div>
+                         </div>
+                         <div class="col-lg-4 col-md-6">
+                            <div class="info-box mb-xl-30">
+                                <div class="img-fit">
+                                <img src="/images/Important/wear-mask.jpg" alt="" width="80" height="80">
+                                </div>
+                               <div class="content-wrap">
+                                <h5 id="masking">Wear Mask</h5>
+                                <p class="text" id="stay-text-two">Masks should be used as part of a comprehensive strategy of measures.</p>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="info-box mb-xl-30">
+                                <div class="img-fit">
+                                <img src="/images/Important/soap-hand.png" alt="" width="80" height="80">
+                                </div>
+                               <div class="content-wrap">
+                                <h5 id="wash-hand">Wash Your Hands</h5>
+                                <p class="text" id="stay-text-three">when you wash your hands, germs go down  then they  cannot make you sick</p>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="info-box mb-xl-30">
+                                <div class="img-fit">
+                                <img src="/images/Important/cooking.jpg" alt="" width="80" height="80">
+                                </div>
+                               <div class="content-wrap">
+                                <h5 id="well">Well Done Cooking</h5>
+                                <p class="text" id="stay-text-four">Certain food items can carry harmful bacteria on them.</p>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="info-box mb-xl-30">
+                                <div class="img-fit">
+                                <img src="/images/Important/seek-doctor.jpg" alt="" width="80" height="80">
+                                </div>
+                               <div class="content-wrap">
+                                <h5 id="seek"> Seek for a Doctor</h5>
+                                <p class="text" id="stay-text-five">Seeing a doctor regularly is a vital investment for your health.</p>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="info-box mb-xl-30">
+                                <div class="img-fit">
+                                <img src="/images/Important/avoid.png" alt="" width="100" height="100">
+                                </div>
+                               <div class="content-wrap">
+                                <h5 id="avoid">Avoid Crowed Places</h5>
+                                <p class="text" id="stay-text-six">Protect yourself and others by avoiding crowded places...</p>
+                               </div>
+                            </div>
+                        </div>
+                     </div>
+            </div>
+        </div>
+    </div>
+    <!-----------End Important Percautions------------------->
+    <!------------------------------------------------------->
+    <!-----------Start Follow steps to wash hands------------>
+<div class="wash-hands">
+    <div class="container">
+         <h6 id="hand-wash">Hand Wash Process</h6>
+        <h2 id="set-rules">Set of Rules How to Wash your Hands</h2>
+        <p id="title-wash">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. Most people infected with the COVID-19 virus will experience</p>
+        <div class="row">
+            <div class="col-md-4 col-xm-6">
+                <div class="hand-box">
+                    <img src="/images/Hand/hadnwash-1.png" alt="">
+                <h6 id="wash-one">Apply Soap on Hand</h6>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <div class="hand-box">
+                    <img src="/images/Hand/hadnwash-2.png" alt="" srcset="">
+                <h6 id="wash-two">Palm to Palm</h6>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+               <div class="hand-box">
+                <img src="/images/Hand/hadnwash-3.png" alt="" srcset="">
+                <h6 id="wash-three">Between Fingers</h6>
+               </div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+               <div class="hand-box">
+                <img src="/images/Hand/hadnwash-4.png" alt="" srcset="">
+                <h6 id="wash-four">Back to Hands</h6>
+               </div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <div class="hand-box">
+                    <img src="/images/Hand/hadnwash-5.png" alt="" srcset="">
+                <h6 id="wash-five">Clean with Water</h6>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <div class="hand-box">
+                    <img src="/images/Hand/hadnwash-6.png" alt="" srcset="">
+                <h6 id="wash-six">Use Towel to Dry</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------End Follow steps to wash hands-----------------   >
+<!----------------------------------------------------------->
+<!--------------------Start LATEST UPDATE NEWS--------------->
+<div class="updata">
+    <div class="container">
+        <!-- <h5 id="updata">RECENT FROM BLOG</h5> -->
+        <h2 id="latest">LATEST UPDATE NEWS</h2>
+        <p class="title" id="udate-title">Find The Latest Breaking News And Information About Coronavirus News</p>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <div class="intro-box">
+                    <div class="img-box">
+                        <img src="/images/Updata/blog-1.jpg" alt="" srcset="">
+                    </div>
+                    <div class="data">29 Apr</div>
+                    <div class="cont">
+                        <p id="update-one">Coronavirus, Social And Physical Distancing And Self-Quarantine</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="intro-box">
+                    <div class="img-box">
+                        <img src="/images/Updata/blog-2.jpg" alt="" srcset="">
+                    </div>
+                    <div class="data">29 Apr</div>
+                    <div class="cont">
+                        <p id="update-two">Global Uncertainty Related to Coronavirus at Record High</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="intro-box">
+                    <div class="img-box">
+                        <img src="/images/Updata/blog-3.jpg" alt="" srcset="">
+                    </div>
+                    <div class="data">29 Apr</div>
+                    <div class="cont">
+                        <p id="update-three">Coronavirus: Practicing Wellness While You Stay at Home</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!----------------End LATEST UPDATE NEWS----------------->
+    <!------------------------------------------------------->
+    <!------------------Start SubScribe---------------------->
+<div class="sub-scribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+              <div class="left">
+                  <h6 id="news">News letter</h6>
+                  <h2 id="sub">Subscribe Our Newsletter
+                    to get Coronavirus Updates</h2>
+              </div>
+            </div>
+            <div class="col-lg-5">
+                <form action="" method="">
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="Enter email address">
+                        <div class="btn-box">
+                            <button class="template-btn border-0 w-100" type="submit">Subscribe now</button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+         </div>
+    </div>
+</div>
+    <!----------------End SubScribe-------------------------->
+    <!----------------Start Conatct Us----------------------->
+    <div class="contact-us">
+        <div class="container">
+          <h2 class="h1 header-border-center text-center contact-main" id="contact">Contact Us</h2>
+          <p class="main text-center" id="call">Call us or send a message</p>
+          <!-- Start Form Contact us  -->
+          <form action="">
+            <div class="left">
+                <input type="text" placeholder="Your Name" name="username">
+                <input type="tel" placeholder="Your Phone" name="phone">
+                <input type="email" placeholder="Your Email" name="email">
+            </div>
+            <div class="right">
+                <textarea name="message" placeholder="Your Message"></textarea>
+                <input type="submit" value="Send">
+            </div>
+        </form>  
+    </div>
+      </div>
+        <!-- End my Emails  -->
+      <!----------------------------End Contact Us------------------------------------------->
+    <!------------------------------Start Footer--------------------------------------------->
+<div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="info">
+           <h2> <span id="ash">El Sharqia Health Care</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, impedit laudantium. Facere voluptatem dicta ratione delectus, 
+                architecto nesciunt quas libero suscipit.
+                <p>Sapiente cumque, voluptates doloremque, quos numquam perferendis officia saepe!</p>
+            </p>
+            <ul class="list-unstyled">
+                <li id="follow">Follow Us : </li>
+                <li><a href="www.facebook.com"><i class="fab fa-facebook-f "></i></a></li>
+                <li><a href="www.what'sapp.com"><i class="fab fa-google-plus-g "></i></a></a></li>
+                <li><a href="www.instagram.com"><i class="fab fa-whatsapp"></i></a></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="links">
+            <h2 id="help">Help Links</h2>
+            <div class="row">
+              <div class="col">
+                <ul class="list-unstyled">
+                  <li class="link" data-section=".about-us" id="About">About Covid-19</li>
+                  <li class="link" data-section=".service" id="servicess">Our Services</li>
+                  <li class="link" data-section=".symptoms" id="Symp">Covid-19 Symptoms</li>
+                  <li class="link" data-section=".symp" id="Konw">Know the symptoms</li>
+                  <li class="link" data-section=".steps" id="taking">taking measures</li>
+                </ul>
+              </div>
+              <div class="col">
+                <ul class="list-unstyled">
+                  <li class="link" data-section=".percautions" id="prec">Important precautions</li>
+                  <li class="link" data-section=".testemonials" id="opinion">Your opinion</li>
+                  <li class="link" data-section=".wash-hands" id="washed">Hand Wash</li>
+                  <li class="link" data-section=".updata" id="Lat">Latest Update</li>
+                  <li class="link" data-section=".sub-scribe" id="subs">Subscribe</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info-b">
+            <h2 id="cont">Contact Us</h2>
+                <ul class="list-unstyled">
+                    <li><div class="row">
+                        <div class="col-2"><img src="/images/icon/placeholder.png" width="25" alt=""></div>
+                        <div class="col-10">Faculty of Computers and Information, Zagazig University</div>
+                    </div>
+                        </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-2"><img src="/images/icon/gmail.png" width="25" alt=""></div>
+                            <div class="col-10"><a href="mailto:fcizu2021@gmail.com?subject=Contact">fcizu2021@gmail.com</a></div>
+                        </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-2"><img src="/images/icon/phone.png" width="25" alt=""></div>
+                                <div class="col-10">01555245948</div>
+                            </div>
+                            </li>
+                </ul>
+            </div>
+          </div>
+    </div>
+    </div>
+    </div>
+    <!---------------------End Footer------------------------>
+    <!------------------------------------------------------->
+    <!---------------------Start Copyright------------------->
+<div class="copy-right">
+<div class="container">
+<span>Made With By FCi-Zu Teams &copy; 2021</span>
+</div>
+</div>
+
+    <!--------------------End Copyright---------------------->
+    <!-- Bootstrap.JS -->
+<script src="/javascripts/Bootstrap/bootstrap.js"></script>
+    <!------------------------------------------------------->
+<script src="/javascripts/Bootstrap/popper.js"></script>
+    <!------------------------------------------------------->
+<script src="/javascripts/lang.js"></script>
+    <!------------------------------------------------------->
+<script src="/javascripts/master.js"></script>
+</body>
+</html>

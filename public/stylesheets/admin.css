@@ -1,0 +1,80 @@
+:root{
+    --main-color : #009688;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    background-position: center;
+    background-size: cover;
+}
+
+.sign-in{
+    padding: 100px 0;
+    text-align: center;
+}
+.sign-in .container{
+    max-width: 1070px;
+}
+.sign-in .left{
+    background-color: #fff;
+    padding: 50px 0;
+    border-radius: 4px;
+    width: 45%;
+    margin: auto;
+    height: 100%;
+}
+.sign-in .log{
+color: var(--main-color);
+margin-bottom: 30px;
+}
+.sign-in .info{
+    padding: 0;
+}
+.sign-in li{
+    display: inline-block;
+    margin: 2px;
+    border: 1px solid var(--main-color);
+    text-align: center;
+    line-height: 40px;
+    width: 40px;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 1s ease-in-out ;
+}
+.sign-in li:hover{
+    background-color: var(--main-color);
+    color: #fff;
+    cursor: pointer;
+}
+.sign-in .title{
+    color: #757575;
+}
+
+
+.sign-in .form{
+    width: 70%;
+    /* margin: 0 120px; */
+    padding: 12px 25px;
+    background-color: #e0e0e05e;
+    border: none;
+    border-radius: 5px;
+}
+@media (max-width : 768px){
+    .sign-in .form{
+        width: 85%;
+    }
+}
+.sign-in .form:focus{
+    outline: none;
+  border-color: none;
+}
+
+.sign-in form .btn{
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 10px 60px;
+    margin-top: 15px;
+    border-radius: 50px;
+}

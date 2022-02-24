@@ -1,0 +1,78 @@
+.btn-prev {
+  float:left;
+}
+
+.btn-next {
+  float:right;
+}
+
+
+.qst {
+  color:#303f9f;
+}
+
+
+aside {
+  width:50% !important;
+  min-height:200px !important;
+}
+@media (max-width : 992px){
+  aside {
+    width: 90% !important;
+    margin: 0px 30px !important;
+    height: 360px !important;
+  } 
+}
+@media (max-width : 576px){
+  aside {
+    width: 94% !important;
+    margin: 0px 9px !important;
+    height: 358px !important;
+    padding: 33px 0px !important;
+  } 
+  .start-daignosis .btn button,
+   .diagnosis-one .btn button, 
+   .diagnosis-two .btn button, 
+   .diagnosis-three .btn button, 
+   .diagnosis-four .btn button, 
+   .diagnosis-five .btn button, 
+   .dagnosis .diagnosis-six .btn button
+  {
+    min-width: 110px !important;
+  }
+
+}
+@media(max-width: 768px){
+p {
+font-size: 13px !important;
+}
+.start-daignosis .btn button,
+   .diagnosis-one .btn button, 
+   .diagnosis-two .btn button, 
+   .diagnosis-three .btn button, 
+   .diagnosis-four .btn button, 
+   .diagnosis-five .btn button, 
+   .dagnosis .diagnosis-six .btn button
+  {
+    min-width: 95px !important;
+  }
+}
+@media(max-width: 280px){
+  p {
+  font-size: 13px !important;
+  }
+  .start-daignosis .btn button,
+     .diagnosis-one .btn button, 
+     .diagnosis-two .btn button, 
+     .diagnosis-three .btn button, 
+     .diagnosis-four .btn button, 
+     .diagnosis-five .btn button, 
+     .dagnosis .diagnosis-six .btn button
+    {
+      min-width: 75px !important;
+    }
+    ol, ul{
+      padding-left: 1rem !important;
+    }
+  }
+  

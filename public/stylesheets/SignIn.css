@@ -1,0 +1,147 @@
+:root{
+    --main-color : #009688;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0;
+}
+
+.sign-in{
+    padding: 100px 0;
+    text-align: center;
+}
+.sign-in .container{
+    max-width: 1070px;
+}
+.sign-in .left{
+    background-color: #fff;
+    padding: 80px 0;
+    border-radius: 8px  0  0 8px;
+    width: 100%;
+    height: 100%;
+}
+.sign-in .log{
+color: var(--main-color);
+}
+.sign-in .info{
+    padding: 0;
+}
+.sign-in li{
+    display: inline-block;
+    margin: 2px;
+    border: 1px solid var(--main-color);
+    text-align: center;
+    line-height: 40px;
+    width: 40px;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 1s ease-in-out ;
+}
+.sign-in li:hover{
+    background-color: var(--main-color);
+    color: #fff;
+    cursor: pointer;
+}
+.sign-in .title{
+    color: #757575;
+}
+
+
+.sign-in .form{
+    width: 60%;
+    /* margin: 0 120px; */
+    padding: 12px 25px;
+    background-color: #e0e0e05e;
+    border: none;
+    border-radius: 5px;
+}
+@media (max-width : 768px){
+    .sign-in .form{
+        width: 85%;
+    }
+}
+.sign-in .form:focus{
+    outline: none;
+  border-color: none;
+}
+
+.sign-in form .btn{
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 10px 60px;
+    border-radius: 50px;
+}
+.sign-in .right{
+    background-color: var(--main-color);
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 8px 8px 0;
+    color: #fff;
+    margin: auto;
+    padding: 164px 0;
+}
+.sign-in .right .h1{
+    margin-bottom: 25px;
+}
+.sign-in  .right .title-p1 , .sign-in  .right .title-p2{
+    padding-left: 10px;
+    color: rgba(255, 255, 255, 0.753);
+    margin-bottom: 5px;
+}
+.sign-in .right .btn{
+    border: 2px solid #fff;
+    padding: 10px 60px;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 30px;
+}
+.sign-in .right .btn a{
+    text-decoration: none;
+    color: #fff;
+}
+.sign-in .error {
+    position: absolute;
+    padding-left: 130px;
+    margin: auto;
+    color: var(--main-color);
+    font-size: 17px;
+}
+
+.sign-in .forget{
+    margin-top: 60px;
+}
+
+.sign-in .forget a{
+color: #333;
+text-decoration: none;
+font-weight: 500;
+}
+.sign-in .forget::after{
+    content:'';
+    display: block;
+  background-color:#e0e0e0;
+  color:#fff;
+  border-radius:6px;
+  height:1.2px;
+  width: 155px;
+  position:relative;
+  top:8px;
+  left:233px;
+  margin-bottom: 40px;
+}
+@media (max-width : 992px){
+    .sign-in .error {
+        padding-left: 20px;
+    }
+}
+@media (max-width : 992px){
+
+    .sign-in .forget::after{
+        
+      left:110px;
+    }
+}
+

@@ -1,0 +1,29 @@
+<form class="manage-hospitals" action="/admin/database/manage" method="post">
+  <h1 class="manage-address">
+    Update Hospitals
+  </h1>
+  <p class="qst-address">
+     Name of hospital
+  </p>
+  <select class="mng-inpt" name="hospital_name" id="">
+    <%for( let y = 0; y < hospitalsNames.length; y++ ) {%>
+      <option value = "<%= hospitalsNames[y].H_name %>" >
+        <%=hospitalsNames[y].H_name%>
+      </option>
+    <%}%> 
+  </select>  
+  <br><br>
+  <p class="qst-address">
+    Number of beds
+  </p>
+  <input class="mng-inpt" type="text" name="numbeds" id="" placeholder=" number of beds ">
+  <br><br>
+  <p class="qst-address">
+    Number of Intensive Case Beds
+  </p>
+  <input class="mng-inpt" style="width:246px;" type="text" name="numintesivecasebeds" id="" placeholder=" number of intensive case beds ">
+  <br><br>
+  <button class="update-hospitals" type="submit">
+    Update
+  </button>
+</form

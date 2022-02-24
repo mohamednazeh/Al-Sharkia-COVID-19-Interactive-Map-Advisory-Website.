@@ -1,0 +1,50 @@
+
+    
+<%- include("./partials/navbar.ejs") %> 
+    <!--Start Landing Page-->
+  <div class="dagnosis">
+      <aside class="diagnosis-four current" expPg="isStableCase">
+        <div class="content">
+            <ol>
+                <li>
+                    <p class="qst">Is your case not stable means "any symptom appeared" ?</p>
+                    <div class="radio-btn">
+                        <input type="radio"  name="qes" id="yes" value="yes">
+                        <label for="yes">Yes</label>
+                        <input type="radio"  name="qes" id="no" value="no">
+                        <label for="No">No</label> 
+                </li>
+            </ol>
+            <div class="btn">
+                <button onclick="expSysGuider({selectedPgName: ''})" class="btn-next">Next</button>
+            </div>
+         </div>
+      </aside>
+      
+        <div class="content-report">
+          <aside class="report-one" expPg="stableCase">
+              <h2>Report</h2>
+              <ul class="list-style">
+                  <li>You don`t have flu-like symptoms and you have not been exposed to Covid-19.</li>
+                  <li>You are not at significant risk of Covid-19. Take all necessary precautions to monitor your health.</li>
+                  <li>Congratulations you don`t have any type of risk.</li>
+              </ul>
+              <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'isStableCase', mission: 'back'})">Back</button>
+              <a href="/diagnose/end"><button class="btn-next" >Ok</button></a>
+          </aside>
+      </div>
+        <div class="content-report" >
+        <aside class="report-two" expPg="examinationsCase">
+            <h2>Report</h2>
+            <ul class="list-style">
+                <li>You have symptoms like flu and You have been exposed to Covid-19 means Suspected case</li>          
+                <li> You must use a Pulse Oximeter or any other device to measure oxygenation and heart rate, and
+                make a CT scan on the chest. After using the device and making a CT scan, return to the diagnostic service and click the Complete button to continue the diagnosis.</li>
+            </ul>
+            <button onclick="expSysGuider({selectedPgName: 'isStableCase', mission: 'back'})" class="btn-prev">Back</button>
+            <a href="/diagnose/done/examinationsCase"> <button class="btn-next" > Ok</button></a>
+        </aside>
+    </div>
+</div>
+
+  

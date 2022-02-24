@@ -1,0 +1,386 @@
+  <%- include("../partials/navbar.ejs")  %> 
+  <!-- ## AVAILABLE HOSPITALs -->
+  <div id="availableHospitals" hidden>
+    <%= availableHospitals %> 
+  </div>
+  <!-- ################################################################## -->
+  <!-- # START MAP CONTAINER -->
+  <div id="map" style="width: 100%; height: 800px;"></div>
+  <!-- # END MAP CONTAINER -->
+  <!-- ################################################################## -->
+  <!-- # START SELECT CLOSEST HOSPITALS PROCESS TO USER -->
+ 
+    <div class="select" style="position: relative;top: 100px;">
+      <div class="selectedHospitals" id="selectHospitals">
+        <header>
+          <p>
+            <span></span>Define The Available Hospitals.
+          </p>
+        </header>
+      <div class="selectedHospitals_sctns">
+        <section class="myLocation">
+          <button class="btn" id="getLocation" onclick="getLocation()">
+            GET MY LOCATION
+          </button>
+          <!-- <button type="button" onclick="distance()"> Distance </button> -->
+          <p class="btn-dsc">
+            Allow us to know <b><u>your location</u></b> to <b><u>select the nearest hospitals &
+            calculate the available hospitals for you</u></b>.
+          </p>
+        </section>
+        <section>
+          <header class='available_hospitals'>
+            <p style="margin-left: 20px;">The Available Hospitals for now: </p>
+          </header>
+          <div class="available_hospitals_list">
+            <p class="warn" ><!--hidden-->
+              You need firstly c  lick the <span onclick="getLocation()" >GET MY LOCATION</span> to get the available and 
+              nearest hospitals.
+            </p>
+            <!-- <ul>
+              <li>
+                alsharqia
+              </li>
+              </ul> -->
+          </div>       
+        </section>
+        <section class="show_map_info" hidden> 
+          <!-- document.querySelector('.show_map_info').hidden = false; -->
+          <!-- <form method="POST" id="handleAvailableHospitals">  -->
+            <!-- <a href="/map"> -->
+              <button  class="btn" onclick="showMap()">
+                <!-- type="submit" -->
+    <!--						onclick="postShrtHsptls()"-->
+                <!-- type="submit" -->
+                <!-- onclick="showHospitalsMap() -->
+                SHOW MAP
+              </button>
+            <!-- </a> -->
+          <!-- </form>  -->
+          <p class="btn-dsc">
+            Display <u><b>more informations about hospitals.</b></u>
+          </p>
+        </section>
+      </div>
+    </div>
+    <footer>
+    </footer>
+  </div>
+  <!-- # END SELECT CLOSEST HOSPITALS PROCESS TO USER -->
+  <!-- ################################################################## -->
+  <script src="/javascripts/map/map.js"></script>
+  
+  
+  <!-- API GOOGLE MAPs -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJfuT-Pfcku06PzhcvInk9j78saQ04sk">
+  </script>
+  
+  
+  <!-- # START CREATE & SHOW MAP -->
+  <script>
+    // # AVAIALBE 10 AVAILABLE HOSPITALS
+    // console.log("Table of available hospitals....");
+    // console.table(hsptls);
+    // ########################################################################
+    // # START DOM ELEMENTS...
+    let interface = {
+      hospitalsFrm: document.getElementById("selectHospitals"),
+      map: document.getElementById("map"),
+    }
+    // # END DOM ELEMENTS...
+    // ########################################################################
+    // # HANDLE DEFAULT @SETTINGs...
+    // # HIDE THE MAP
+    interface.map.style.display = "none";
+    // interface.map.style.height = "0px";
+    console.log("Map: >>hide the map...");
+    // SHOW MAP
+    function showMap() {
+      // +1 HIDE HOSPITALS UL ELE
+      interface.hospitalsFrm.style.display = "none";
+      console.log("---- ----- --------- ---- --------- ----");
+      // console.log(interface.hospitalsFrm);
+      console.log("---- ----- --------- ---- --------- ----");
+      // +2 DISPLAY THE MAP CONTAINER ELE
+      interface.map.style.display = "block";
+      // +3 CREATE MAP & DISPLAY MAP
+      initMap();
+    }
+    // ##########################################################################
+    // # CREATE MAP & DISPLAY MAP
+    // ##########################################################################
+    function initMap(){
+    
+      // # @AVAILABLE_HOSPITALS
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+      // console.log(hsptls);
+      console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      // # MAP @OPTIONS
+      let options = {
+        zoom:10,
+        center:{lat:30.62,lng:31.63}
+      }
+      // # CREATE NEW MAP
+      // # DECLARE _MARKERS...
+      let markers = [];
+      
+      // PIN THE CURRENT LOCATION...
+      infoWindow = new google.maps.InfoWindow;
+      geocoder = new google.maps.Geocoder();
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+              };
+              map.setCenter(pos);
+              var marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(pos),
+                  map: map,
+                  title: 'موقعك الحالي'
+              });
+              markers.push(marker);
+              marker.addListener('click', function() {
+                  geocodeLatLng(geocoder, map, infoWindow,marker);
+              });
+              // to get current position address on load
+              google.maps.event.trigger(marker, 'click');
+          }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+          });
+      } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+      }
+      
+      // ########################################################################################
+      // HANDLE @COORDINATEs
+      let handleCoordinates = (coordinates) => {
+        const crdVls = coordinates.split(","); ["", ""]
+        return {
+          lat: parseFloat(crdVls[0]),
+          lng: parseFloat(crdVls[1]),
+        }
+      }
+      // ########################################################################################
+      // # RETURN LINK UPON ON @HOSPITAL_NAME DATABASE
+      function getGoogleMapLink ( hospitalName )
+      { 
+        let link;
+        switch(hospitalName) { 
+          // # [+1] ZAGAZIG
+          case "Zagazig is general":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%B2%D9%82%D8%A7%D8%B2%D9%8A%D9%82+%D8%A7%D9%84%D8%B9%D8%A7%D9%85%E2%80%AD/@30.5931191,31.5115645,17z/data=!4m12!1m6!3m5!1s0x14f7f119e3e9266b:0x8d47d85cf3d5964c!2z2YXYs9iq2LTZgdmJINin2YTYstmC2KfYstmK2YIg2KfZhNi52KfZhQ!8m2!3d30.5931145!4d31.5093758!3m4!1s0x14f7f119e3e9266b:0x8d47d85cf3d5964c!8m2!3d30.5931145!4d31.5093758?hl=ar";
+            break;
+          // # [+2] FAQOUS
+          case "faqous ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D9%81%D8%A7%D9%82%D9%88%D8%B3+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.7312368,31.789223,17z/data=!3m1!4b1!4m5!3m4!1s0x14f82495934cb8e9:0xb7c428f32251f8fc!8m2!3d30.7312322!4d31.7870343?hl=ar";
+            break;
+          // # [+3] AL-QANAYAT
+          case "Al qanayat ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D9%82%D9%86%D8%A7%D9%8A%D8%A7%D8%AA+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.6134673,31.4663397,19z/data=!4m12!1m6!3m5!1s0x14f7f1c1b29a7b79:0xa154b38c684206f2!2z2YXYs9iq2LTZgdmJINin2YTZgtmG2KfZitin2Kog2KfZhNmF2LHZg9iy2Yk!8m2!3d30.6134661!4d31.4657925!3m4!1s0x14f7f1c1b29a7b79:0xa154b38c684206f2!8m2!3d30.6134661!4d31.4657925?hl=ar";
+            break;
+          // # [+4] MINA AL-QAMH -  Minia al-Qamh 
+          case " Minia al-Qamh ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D9%85%D9%86%D9%8A%D8%A7+%D8%A7%D9%84%D9%82%D9%85%D8%AD+%D8%A7%D9%84%D8%B9%D8%A7%D9%85%E2%80%AD/@30.5212527,31.3542932,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7e6a027a759e3:0x2bf5284dd006b84f!8m2!3d30.5212481!4d31.3521045?hl=ar";
+            break;
+          // # [+5] BELBIES 
+          case " Belbies ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A8%D9%84%D8%A8%D9%8A%D8%B3+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%E2%80%AD/@30.4309012,31.5621284,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7ff5f0a8dc5b7:0x330b96cd8ebbe279!8m2!3d30.4308966!4d31.5599397?hl=ar";
+            break;
+          // # [+6] HAHIA 
+          case "Hahia ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D9%87%D9%87%D9%8A%D8%A7+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.675708,31.5985987,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7f5304cb4a151:0x5c5555b9a56ccd52!8m2!3d30.6757034!4d31.59641?hl=ar";
+            break;
+          // # [+7] ABU HAMAD  
+          case " Abu Hammad ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D8%A8%D9%88+%D8%AD%D9%85%D8%A7%D8%AF+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.7193814,31.6790612,15z/data=!3m1!4b1!4m12!1m6!3m5!1s0x14f820e3c5914ca9:0x27cae850e0eeed02!2z2YXYs9iq2LTZgdmJINin2KjZiCDYrdmF2KfYryDYp9mE2YXYsdmD2LLZiQ!8m2!3d30.7193632!4d31.6703064!3m4!1s0x14f820e3c5914ca9:0x27cae850e0eeed02!8m2!3d30.7193632!4d31.6703064?hl=ar";
+            break;
+          // # [+8] DIRIB NAJAM
+          case " dirib najam ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%AF%D9%8A%D8%B1%D8%A8+%D9%86%D8%AC%D9%85+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.7505401,31.4531547,17z/data=!4m12!1m6!3m5!1s0x14f78d63842acfe1:0xe8cb6fd934d03b7b!2z2YXYs9iq2LTZgdmJINiv2YrYsdioINmG2KzZhSDYp9mE2YXYsdmD2LLZiQ!8m2!3d30.7505355!4d31.450966!3m4!1s0x14f78d63842acfe1:0xe8cb6fd934d03b7b!8m2!3d30.7505355!4d31.450966?hl=ar";
+            break;
+          // # [+9] ALZAWAMIL
+          case " alzawamil ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%B2%D9%88%D8%A7%D9%85%D9%84+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%E2%80%AD/@30.3484099,31.4367905,17z/data=!3m1!4b1!4m5!3m4!1s0x14580885f1251c11:0xa1b3973fe8a4bed5!8m2!3d30.3484053!4d31.4346018?hl=ar";
+            break;
+          // # [+10] ALSALIHIA
+          case "Alsalihia":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D8%AD%D9%8A%D8%A9+%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.6310348,31.9427599,17z/data=!4m12!1m6!3m5!1s0x14f83e561bb14a9b:0x1c4f96338444711d!2z2YXYs9iq2LTZgdmJINin2YTYtdin2YTYrdmK2Kkg2KfZhNis2K_Zitiv2Kkg2KfZhNmF2LHZg9iy2Yk!8m2!3d30.6310302!4d31.9405712!3m4!1s0x14f83e561bb14a9b:0x1c4f96338444711d!8m2!3d30.6310302!4d31.9405712?hl=ar";
+            break;
+          // # [+11] ALSAEDIIYN
+          case " Alsaeadiiyn":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%B3%D8%B9%D8%AF%D9%8A%D9%8A%D9%86+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%E2%80%AD/@30.4520828,31.3730167,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7e3d143ee9ab1:0xae095122c81f81fd!8m2!3d30.4520782!4d31.370828?hl=ar";
+            break;
+          // # [+12] MSHTWL ALSUWQ
+          case " mshtwl alsuwq ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D9%85%D8%B4%D8%AA%D9%88%D9%84+%D8%A7%D9%84%D8%B3%D9%88%D9%82+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.42574,31.4157728,17z/data=!4m12!1m6!3m5!1s0x14f7e2edb0c93613:0xfe72309fad82eca8!2z2YXYs9iq2LTZgdmJINmF2LTYqtmI2YQg2KfZhNiz2YjZgiDYp9mE2YXYsdmD2LLZiQ!8m2!3d30.4257354!4d31.4135841!3m4!1s0x14f7e2edb0c93613:0xfe72309fad82eca8!8m2!3d30.4257354!4d31.4135841?hl=ar";
+            break;
+          // # [+13] ALABRAHIMIA
+          case "Alabrahimia ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%A7%D8%A8%D8%B1%D8%A7%D9%87%D9%8A%D9%85%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.7236273,31.5563517,17z/data=!3m1!4b1!4m5!3m4!1s0x14f78b6e78cfad7f:0xfe981d9c1a02bbe9!8m2!3d30.7236227!4d31.554163?hl=ar";
+            break;
+          // # [+14] ALSUWFIA
+          case "alsuwfia ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%B5%D9%88%D9%81%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.9137259,31.7718824,17z/data=!3m1!4b1!4m5!3m4!1s0x14f82db23d8c2c8d:0xddd310703efbf610!8m2!3d30.9137213!4d31.7696937?hl=ar";
+            break;
+          // # [+15] ALSUWFIA
+          case "awlad saqr ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A3%D9%88%D9%84%D8%A7%D8%AF+%D8%B5%D9%82%D8%B1+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%E2%80%AD/@30.9443763,31.7195274,17z/data=!3m1!4b1!4m5!3m4!1s0x14f82b7e7835a02d:0xb2b25ae246bb85c4!8m2!3d30.9443717!4d31.7173387?hl=ar";
+            break;
+          // # [+16] ALQARIN
+          case "Alqarin":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D9%82%D8%B1%D9%8A%D9%86+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.6074721,31.7482138,17z/data=!3m1!4b1!4m5!3m4!1s0x14f818e6cf89cfa3:0xfc9a72a2ffc22f39!8m2!3d30.6074675!4d31.7460251?hl=ar";
+            break;
+          // # [+17] TALIRUK
+          case "taliruk":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%AA%D9%84%D8%B1%D8%A7%D9%83+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.8910936,31.7315407,17z/data=!3m1!4b1!4m5!3m4!1s0x14f82ea8ea87d401:0x220d9be47ad9ee86!8m2!3d30.891089!4d31.729352?hl=ar";
+            break;
+          // # [+18] ABU KABIR
+          case "Abu Kabir ":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D8%A8%D9%88+%D9%83%D8%A8%D9%8A%D8%B1+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.7197807,31.6614282,17z/data=!3m1!4b1!4m5!3m4!1s0x14f820ee4e94a15d:0x82e4ec7ea82f6dba!8m2!3d30.7197761!4d31.6592395?hl=ar";
+            break;
+          // # [+19] ALHUSAYNIA
+          case "Alhusaynia":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%AD%D8%B3%D9%8A%D9%86%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%E2%80%AD/@30.8639326,31.9148862,17z/data=!3m1!4b1!4m5!3m4!1s0x14f83412a07feb83:0xb87874e9b7f18b04!8m2!3d30.863928!4d31.9126975?hl=ar";
+            break;
+          // # [+20] KAFR SAQR
+          case "Kafr Saqr":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D9%83%D9%81%D8%B1+%D8%B5%D9%82%D8%B1+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A+%D8%A7%D9%84%D8%B9%D8%A7%D9%85%E2%80%AD/@30.7982726,31.6305875,17z/data=!3m1!4b1!4m5!3m4!1s0x14f8277ffdedd88b:0x7a6797ecaee9f40e!8m2!3d30.798268!4d31.6283988?hl=ar";
+            break;
+          // # [+21] SADR ZAGAZIG
+          case "Sadr Zagazig":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%8A+%D8%B5%D8%AF%D8%B1+%D8%A7%D9%84%D8%B2%D9%82%D8%A7%D8%B2%D9%8A%D9%82%E2%80%AD/@30.5722136,31.5099864,19z/data=!4m9!1m2!2m1!1z2YXYs9iq2LTZgdmKINi12K_YsSDYp9mE2LLZgtin2LLZitmCLCDYp9mE2LTZh9iv2KfYodiMINin2YTYrdix2YrYsdmK2Iwg2KfZiNmEINin2YTYstmC2KfYstmK2YI!3m5!1s0x0:0x99a2209f658b7628!8m2!3d30.5723764!4d31.5095351!15sCl_Zhdiz2KrYtNmB2Yog2LXYr9ixINin2YTYstmC2KfYstmK2YIsINin2YTYtNmH2K_Yp9ih2Iwg2KfZhNit2LHZitix2YrYjCDYp9mI2YQg2KfZhNiy2YLYp9iy2YrZgpIBCGhvc3BpdGFs?hl=ar";
+            break;
+          // # [+22] OPHTAHALMOLOGY
+          case "ophthalmology":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%B1%D9%85%D8%AF+%D8%A8%D8%A7%D9%84%D8%B2%D9%82%D8%A7%D8%B2%D9%8A%D9%82%E2%80%AD/@30.5979975,31.5241124,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7f138fcc652a5:0x24a32c465bd12f54!8m2!3d30.5979929!4d31.5219237?hl=ar";
+            break;
+          // # [+23] HAMIYAT ALZAGAZIG
+          case "hamiyat alzaqaziq":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%AD%D9%85%D9%8A%D8%A7%D8%AA+%D8%A7%D9%84%D8%B2%D9%82%D8%A7%D8%B2%D9%8A%D9%82%E2%80%AD/@30.5734633,31.5103748,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7f11df48a84e5:0xe2f548973f2b356d!8m2!3d30.5734587!4d31.5081861?hl=ar";
+            break;
+          // # [+24] HUMIAT FAQUS
+          case "humiyaat faqus":
+            link = "https://www.google.com.eg/maps/search/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%AD%D9%85%D9%8A%D8%A7%D8%AA+%D9%81%D8%A7%D9%82%D9%88%D8%B3%E2%80%AD/@30.8037214,31.864721,10z/data=!3m1!4b1?hl=ar";
+            break;
+          // # [+25] MUSTASHAFI SANAHUAT
+          case "mustashfi sanahuat":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%B3%D9%86%D9%87%D9%88%D8%AA+%D8%A7%D9%84%D8%AA%D8%AE%D8%B5%D8%B5%D9%89%E2%80%AD/@30.4661759,31.3412572,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7e176ef9e2e03:0x80de2f52ff323141!8m2!3d30.4661713!4d31.3390685?hl=ar";
+            break;
+          // # [+26] AL ALHRAR HOSPITAL
+          case "Al Ahrar Hospital":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D8%A3%D8%AD%D8%B1%D8%A7%D8%B1+Ahrar+General+Hospital%E2%80%AD/@30.5661658,31.5039437,17z/data=!3m1!4b1!4m5!3m4!1s0x14f7f0f28bf7707f:0x978461a42d293680!8m2!3d30.5661612!4d31.501755?hl=ar";
+            break;
+          // # [+27] FI ALTAAMIN BUALEASHIR
+          case "fi altaamin bialeashir":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89+%D8%A7%D9%84%D9%87%D9%8A%D8%A6%D8%A9+%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9+%D9%84%D9%84%D8%AA%D8%A3%D9%85%D9%8A%D9%86+%D8%A7%D9%84%D8%B5%D8%AD%D9%8A%E2%80%AD/@30.2836529,31.7510224,17z/data=!3m1!4b1!4m5!3m4!1s0x1457fdbb9544d673:0xfebf1502686b4b96!8m2!3d30.2836483!4d31.7488337?hl=ar";
+            break;
+          // # [+28] MUSTASHFI ALJANIEA
+          case "mustashfi aljamiea":
+            link = "https://www.google.com.eg/maps/place/%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%8A%D8%A7%D8%AA+%D8%AC%D8%A7%D9%85%D8%B9%D8%A9+%D8%A7%D9%84%D8%B2%D9%82%D8%A7%D8%B2%D9%8A%D9%82%E2%80%AD/@30.5850107,31.4894961,17z/data=!4m12!1m6!3m5!1s0x14f7f0546b25bebd:0xbcff96029810b0f2!2z2YXYs9iq2LTZgdmK2KfYqiDYrNin2YXYudipINin2YTYstmC2KfYstmK2YI!8m2!3d30.5850061!4d31.4873074!3m4!1s0x14f7f0546b25bebd:0xbcff96029810b0f2!8m2!3d30.5850061!4d31.4873074?hl=ar";
+            break;
+          default:
+            link = "/";
+        }
+        return link;
+      }
+      // ########################################################################################
+
+
+      // ########################################################################################
+      // CREATE @NUMBER_MARKERs...
+      function createMarker( i ) 
+      {
+        return `http://maps.google.com/mapfiles/kml/paddle/${i}.png`;
+      }
+      // hsptls << THAT CONTAINS HOSPTIALS THAT NEED MARKERs...
+      // INITIALIZE MARKERS F @AVAIlABLE_HOSPITALs...
+      const initHospitalsMarkers = () => {
+        for (let y = 0; y < hsptls.length; y++) {
+          // console.log(hospitalVls[y]);
+          markers.push({
+            coords: handleCoordinates(hsptls[y].coordination),
+            // "iconImage":'http://maps.google.com/mapfiles/ms/micons/hospitals.png',
+            "iconImage":createMarker(y+1),
+            content: `<div dir='rtl' class='cnt'><p>${hsptls[y].H_name}</p><p>${hsptls[y].Street}</P><p> حى الحكماء</p><p>${hsptls[y].City}</p> <p> الشرقية</p><p>number of beds: ${hsptls[y].Num_beds}</p><p>Number of intensive care: ${hsptls[y].Num_intensive_case_beds} </p></div><a href='${getGoogleMapLink(hsptls[y].H_name)}' target='_blank'>معرفة الطريق</a>`
+          })
+        }
+      }
+      // # RUN INITIATION F ADDING MARKERS T HOSPITALs...
+      initHospitalsMarkers();
+      // ########################################################################################
+      let map = new google.maps.Map(document.getElementById('map'), options);
+      // # LOOP THROUGH @MARKERs
+      for(var i = 0;i < markers.length; i++){
+        // ADD MARKER
+        addMarker(markers[i]);
+      }
+      // ADD MARKER
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+        // CHECK F CUSTOM ICON
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+        // CHECK CONTENT
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  <!-- # END CREATE & SHOW MAP... -->
+  <!-- ########################################################################## -->
+
+  <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJfuT-Pfcku06PzhcvInk9j78saQ04sk">
+  </script> -->
+  
+  
+  <!--  
+    #################################################################################################### 
+    #################################################################################################### 
+    #################################################################################################### 
+  -->
+  <!-- <script src="/javascripts/map/showHospitalsMap.js"></script> -->
+  <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJfuT-Pfcku06PzhcvInk9j78saQ04sk">
+  </script> -->
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+	<!-- <script>
+		// console.log(hsptls) 
+		// Send Ajax Post
+// 		$("#handleAvailableHospitals").submit(function(e) {
+// //						alert("ajax request...")
+// 						e.preventDefault();
+// 						$.ajax({
+// 								url: "http://localhost:3000/ajax1",
+// 								type: "POST",
+// 								data: {
+// 									hospitals: JSON.stringify(hsptls),
+// 								},
+// 								success: function(response){
+// 									if (response.d == true) {
+// 											alert("You will now be redirected.");
+// 											window.location = "http://localhost:3000/diagnose/";
+// 									}
+// 								},
+// 						});
+// 				}); -->
+		</script>
+		
+		
+		
+  

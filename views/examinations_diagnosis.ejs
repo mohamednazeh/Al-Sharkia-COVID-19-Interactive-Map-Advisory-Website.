@@ -1,0 +1,540 @@
+  <%- include("./partials/navbar.ejs")  %> 
+  <div class="dagnosis">
+    <!-- + Diagnose Service Window -->
+        <div class="content" >
+            <div class="overlay"></div>
+            <aside class="start-daignosis " expPg="expService">
+              <h2>Diagnose Service</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quis doloru
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quis doloru
+              </p>
+              <div class="btn">
+                    <a href="/diagnose/start"><button type="btn-star">Get Started</button></a>
+                    <a href="/diagnse/complete"><button type="btn-complete">Complete</button></a>
+              </div>
+            </aside>  
+        </div>
+    <!-- - Diagnose Service Window -->
+    <!-- ------------------------------------------------------ -->
+    <!-- + Start All questions of expert system service -->
+    <!-- 1.1)Start Prime Check  -->
+        <aside class="diagnosis-one" expPg="primeCheck">
+            <ul>
+                <li>
+            <p>Have you been directly exposed (6 feet or cough on) to a confirmed case of covid-19?</p>
+            <div class="radio-btn">
+                <input type="radio"  name="qes1" id="yes" value="yes">
+                <label for="yes">Yes</label>
+                <input type="radio"  name="qes1" id="no" value="no">
+                <label for="No">No</label>
+            </div>
+                </li>
+                <li>
+                    <p>Have you recently been an area with confirmed cases of covid-19 ?</p>
+                    <div class="radio-btn">
+                        <input type="radio"  name="qes2" id="yes" value="yes">
+                        <label for="yes">Yes</label>
+                        <input type="radio"  name="qes2" id="no" value="no">
+                        <label for="No">No</label>
+                    </div>
+                </li>
+            </ul>
+            <div class="btn">
+                <button onclick="expSysGuider({selectedPgName: 'fluLikeSymptoms', mission: 'back'})" class="btn-prev"> Prev</button>
+                <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="btn-next">Next</button>
+            </div>
+        </aside>
+    <!-- 1.1)End Prime Check -->
+    <!-- ------------------------------------------------------ -->
+    <!-- 1.2)Start Sneezing  -->
+        <aside class="diagnosis-two"  expPg="sneezeCheck">
+            <div class="content">
+                <ul>
+                    <li>
+                        <p>Do you have sneezing, experiencing a runny nose?</p>
+                        <div class="radio-btn">
+                            <input type="radio"  name="qes" id="yes" value="yes">
+                            <label for="yes">Yes</label>
+                            <input type="radio"  name="qes" id="no" value="no">
+                            <label for="No">No</label> 
+                    </li>
+                </ul>
+                <ul class="report">
+                    <li><p>A sneeze or sternutation is a semi-autonomous, convulsive expulsion of air from the lungs through the nose and the mouth.</p></li>
+                    <li><p>Usually caused by foreign particles irritating the nasal mucosa.</p></li>
+                    <li><p>A sneeze expels air forcibly from the mouth and nose in an explosive, spasmodic involuntary action resulting chiefly from irritation of the nasan mucous membrance.</p></li>
+                </ul>
+                <div class="btn">
+                    <button onclick="expSysGuider({selectedPgName: 'feverCheck', mission: 'back'})" class="btn-prev">Prev</button>
+                    <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="btn-next">Next</button>
+                </div>
+            </div>
+            
+          </aside>
+    <!-- 1.2)End Sneezing -->
+    <!-- ------------------------------------------------------ -->
+    <!-- 1.3)Start Itchy Eyes -->
+        <aside class="diagnosis-three " expPg="itchyEyesCheck">
+            <div class="content">
+                <ul>
+                    <li>
+                        <p>Are you suffering from itchy eyes?</p>
+                        <div class="radio-btn">
+                            <input type="radio"  name="qes" id="yes" value="yes">
+                            <label for="yes">Yes</label>
+                            <input type="radio"  name="qes" id="no" value="no">
+                            <label for="No">No</label> 
+                    </li>
+                </ul>
+                <ul class="report">
+                    <li><p>Itchy eyes, aslo known as ocular pruritis, are a very common problem.</p></li>
+                    <li><p>Itchy eyes are usually caused by an allergy or by a condition called dry eye syndrome.</p></li>
+                    <li><p>You might also have itchy eyelids, usually at the base if the eyelashes, and your eyes and or eyelids might be swollen.</p></li>
+                </ul>
+                <div class="btn">
+                    <button onclick="expSysGuider({selectedPgName: 'sneezeCheck', mission: 'back'})" class="btn-prev" >Prev</button>
+                    <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="btn-next">Next</button>
+                </div>
+            </div>
+            
+          </aside>
+    <!-- 1.5) End Fever --> 
+    <!-- ------------------------------------------------------ -->
+    <!-- 1.6) Start Check for Failure -->
+        <aside class="diagnosis-six current" expPg="failureCheck">
+            <div class="content">
+                <ol>
+                    <li>
+                        <p class="qst">
+                          Do you have Occurrence of respiratory failure requiring mechanical 
+                          ventilation, ARDS, Presence of shock, Sepsis, Multi-organ failure?
+                        </p>
+                        <div class="radio-btn">
+                            <input type="radio"  name="qes" id="yes" value="yes">
+                            <label for="yes">Yes</label>
+                            <input type="radio"  name="qes" id="no" value="no">
+                            <label for="No">No</label> 
+                    </li>
+                </ol>
+                <div class="btn">
+                    <button onclick="expSysGuider({selectedPgName: '', mission: 'next', constraintId: true})" class="btn-next">Next</button>
+                </div>
+            </div>
+          </aside>
+
+    <!-- 1.6) End Check for Failure -->
+    <!-- + End All questions of expert system service -->
+    <!-- ---------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------- -->
+    <!-- + Start Reports of expert system service -->
+    <div class="report">
+            <!-- Start Sever Case -->
+            <div class="container">
+                <aside class="several-case" expPg="severCheck">
+                    <h2>Report For Severe Case</h2>
+                    <h3>Admit to Intermediate Care and Recommended medicines</h3>
+                    <ul class="list-style" style="display: flex;">
+                        <li>
+                          <button class="btn-select_hospitals">
+                            Define the treatment
+                          </button>
+                        </li>
+                        <a href="/diagnose/selectHospitals">
+                          <button class="btn-select_hospitals">
+                            Select the hospitals
+                          </button>
+                        </a>
+                    </ul>
+                    <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'severFormCheck', mission: 'back'})">Back</button>
+                  </aside>
+            </div>
+        <!-- ------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------ -->               
+        <!-- Start Critical Case -->
+            <div class="content-report">
+                <aside class="critical" expPg="criticalCase">
+                    <h2>Report of Critical illness</h2>
+                    <ul class="list-style">
+                        <li>Admit to Intensive Care.</li>
+                        <li>
+                          
+                        </li>
+                    </ul>
+                    
+                    <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'failureCheck', mission: 'back'})">Back</button>
+                    <a href="/diagnose/selectHospitals">
+                      <button class="btn-next">
+                        Select the hospitals
+                      </button>
+                    </a>
+                </aside>
+            </div>
+            <div class="content-report">
+                <aside class="mild-case" expPg="mildCaseMedicines">
+                    <h2>Report of mild case</h2>
+                    <h3>Home isolation and recomended treatment :</h3>
+                    <ul class="list-style">
+                        <li>Hydroxychloroquine (400 mg twice in first day then 200 mg twice for 6 days ) OR Ivermectin 6 mg (36 mg on day 0-3-6) OR Favipiravir 1600 TWICE daily first day then 600 mg twice daily</li>
+                        <li>Zinc 50mg dialy . Acelylcysteine 200mg t.d.s.lactoferrin one sachet twice daily.Vitmin C 1mg daily.
+                        </li>
+                        </ul>
+                    <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'medicineFormSelect', mission: 'back'})">Back</button>
+                    <a href="/diagnose/end"><button class="btn-next" >End</button></a>
+                </aside>
+            </div>
+        <!-- ------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------ -->   
+        <!-- Start Moderate Case -->
+        
+            <div class="content-report">
+                <aside class="moderate-case" expPg="moderateCase">
+                    <h2> Report of Moderate Case </h2>
+                    <h3> Moderate Case,Hospital Admission Covid-19 Area and recomended medicines </h3>
+                    <ul class="list-style">
+                        <li><span> Anti-virals</span> : Hydroxychloroquine + Ivermectin or Lopinavir/Ritonavir or Remdesivir for high risk population with SaO2 <92 </li>
+                        <li><span>Immune-modulators Anti-inflammatory </span> : Steroids (if patient has severe dyspnea) RR > 24 or CT scan showing rapid deterioration Dexamethasone 6 mg or its oral equivalent </li>
+                        <li><span>Anti-coagulation</span> : Prophylactic anticoagulation if D-Dimer between Therapeutic 500 -1000 anti-coagulation if D-dimer > 1000 </li>
+                        
+                    </ul>
+                    
+                    <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'moderateFormCheck', mission: 'back'})">Back</button>
+                    <a href="/diagnose/selectModerateHospitals">
+                      <button class="btn-select_hospitals">
+                        Select the hospitals
+                      </button>
+                    </a>
+                  </aside>
+            </div>
+        
+        <!-- ------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------ -->   
+        <!-- Start Stable and Suspected Case -->
+        <!-- <aside expPg="stableSuspectedCase"> -->
+            <div class="content-report">
+                <aside class="stable-suspected" expPg="stableSuspectedCase">
+                    <h2> Report</h2>
+                    <h3> Strict Home Isolation <span>(Symptomatic Treatment)</span>  </h3>
+                    <ul class="list-style">
+                        <li> Follow and use personal protective guide equipment.</li>
+                        <li> If any deterioration occurs, Back to hospital.</li>
+                        <li> Np: Paracetamol is the prefered antipyretic.</li>
+                    </ul>
+                    <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'medicineFormSelect', mission: 'back'})">Back</button>
+                    <a href="/diagnose/end"><button class="btn-next" >End</button></a>
+                </aside>
+            </div>
+        <!-- ------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------ -->   
+        <!-- Start Mild Case -->
+        <div class="content-report" >
+            <aside class="allergies" expPg="mildeCase">
+                <h2>Report</h2>
+                <ul class="list-style">
+                    <li>Mild Case, Home Isolation and <span>Close Follow Up </span> </li>
+                </ul>
+                <button class="btn-prev" onclick="expSysGuider({selectedPgName: 'moderateFormCheck', mission: 'back'})">Back</button>
+                <button class="btn-next" onclick="expSysGuider({selectedPgName: '', mission: 'next'})">Next</button>
+            </aside>
+        </div>
+    <!-- + End Reports of expert system service -->
+    <!-- ---------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------- -->
+    <!-- + Start Forms of expert system service -->
+    <!-- Window of browser -->
+        <!-- + All pages of expert system Diagnose Service  -->
+        <!-- )+2 Forms Items -->
+          <!-- )+2.1  -->
+          <!-- )+2.2  -->
+          <aside class="container frm-exp"  expPg="moderateFormCheck" id="moderate">
+            <div>
+              <!-- The title of the form -->
+              <header class="frm-title">
+                <p>
+                  Examinations Moderate Case
+                </p>
+              </header>
+              <!-- Questions of form -->
+              <div class="frmqstns">
+                <!-- )+ All questions of form -->
+                <div class="frm-qstn">
+                  <p>
+                    1. Do you have radiological signs for pneumonia ?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer1" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer1" value="No"> No</section>
+                  </div>
+                </div>          
+                <div class="frm-qstn">
+                  <p>
+                    2. Do you have lymphopenia or leucopenia?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer2" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer2" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    3. Do you have a persistent fever for a week?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer3" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer3" value="No"> No</section>
+                  </div>
+                </div>
+                <!-- -All questions of form -->
+              </div>
+              <footer class="frm-navigation"> 
+                <div>
+                  <button onclick="expSysGuider({selectedPgName: 'severFormCheck', mission: 'back'})" class="prev">
+                    Prev
+                  </button>
+                  <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="next">
+                    Next
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </aside>
+          <!-- )+2.3 -->
+          <aside class="container  frm-exp" expPg="medicineFormSelect" id="medicine">
+            <div>
+              <!-- The title of the form -->
+              <header class="frm-title">
+                <p>
+                  Complete Form
+                </p>
+              </header>
+              <!-- Questions of form -->
+              <div class="frmqstns">
+                <!-- )+ All questions of form -->
+                <div class="frm-qstn">
+                  <p>
+                    1. Age >= 65
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer1" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer1" value="No"> No</section>
+                  </div>
+                </div>          
+                <div class="frm-qstn">
+                  <p>
+                    2. Temperature >38
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer2" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer2" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    3. SaO2 < 92%
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer3" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer3" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    4. Heart Rate >= 110
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer4" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer4" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    5. Respiratory Rate >25/min 
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer5" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer5" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    6. Neutrophil Lymphocyte Rate on CPC >= 3.1
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer6" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer6" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    7. Uncontrolled Comorbidities?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer7" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer7" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    8. Immunossuppressive Drug?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer8" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer8" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    9. Pregnancy?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer9" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer9" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    10. Active Malignancy?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer10" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer10" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    11. On Chemotherapy?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer11" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer11" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    12. Obesity ( BMI > 40 ) ?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer12" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer12" value="No"> No</section>
+                  </div>
+                </div>
+                <!-- -All questions of form -->
+              </div>
+              <footer class="frm-navigation"> 
+                <div>
+                  <button onclick="expSysGuider({selectedPgName: 'mildeCase', mission: 'back'})" class="prev">
+                    Prev
+                  </button>
+                  <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="next">
+                    Next
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </aside>
+          <!-- )+2.4 -->
+          <aside class="container  frm-exp" id="sever" expPg="severFormCheck">
+            <div>
+              <!-- The title of the form -->
+              <header class="frm-title">
+                <p>
+                  Examinations Severe Case
+                </p>
+              </header>
+              <!-- Questions of form -->
+              <div class="frmqstns">
+                <!-- )+ All questions of form -->
+                <div class="frm-qstn">
+                  <p>
+                    1. Do you have signs for pneumonia and SpO2 < 92% ? 
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer1" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer1" value="No"> No</section>
+                  </div>
+                </div>          
+                <div class="frm-qstn">
+                  <p>
+                    2. Do you have signs for pneumonia and PaO2/FiO2 < 300 ?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer2" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer2" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    3. Do you have signs for pneumonia and Respiratory Rate(RR) > 30 ? 
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer3" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer3" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    4. Do you suffer from a chronic disease?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer4" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer4" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                    5. Lung imaging:>50 lesions or progressive lesion ?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer5" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer5" value="No"> No</section>
+                  </div>
+                </div>
+                <div class="frm-qstn">
+                  <p>
+                   6. Do you suffer from dyspnea on rest?
+                  </p>
+                  <!-- # Select answers -->
+                  <div class="select-answers">
+                    <section><input type="radio" name="answer6" value="yes"> Yes</section>
+                    <section><input type="radio" name="answer6" value="No"> No</section>
+                  </div>
+                </div>
+                <!-- -All questions of form -->
+
+              </div>
+              <footer class="frm-navigation"> 
+                <div>
+                  <button onclick="expSysGuider({selectedPgName: 'failureCheck', mission: 'back'})" class="prev">
+                    Prev
+                  </button>
+                  <button onclick="expSysGuider({selectedPgName: '', mission: 'next'})" class="next">
+                    Next
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </aside>
+         <!-- End Forms -->
+          <!-- + All pages of expert system  Diagnose Service -->
+    <!-- + End Forms of expert system service -->
+</div>
+</div>
